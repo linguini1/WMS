@@ -16,7 +16,7 @@ db.warehouses.append(Warehouse("Kanata", 1200, "15, 13"))
 db.warehouses.append(Warehouse("Lanark", 6, "16, 13"))
 
 # Showing dashboard of warehouses
-print("     Name                 | Capacity    | Coordinates\n")  # Header row
+print("     Name                 | Capacity   | Coordinates\n")  # Header row
 for index, warehouse in enumerate(db.warehouses):
     print(f"({index + 1})", end="")
     for _ in range(3 - len(str(index + 1))):

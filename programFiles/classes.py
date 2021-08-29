@@ -21,14 +21,33 @@ class Item:
         # Value check
         if price <= 0 or size <= 0 or cost <= 0:
             raise ValueError("This value must be greater than 0.")
+        elif price > 999999 or size < 99999999 or cost < 999999:
+            raise ValueError("Number too large.")
 
         # Check if name already exists here
+
+        # Name length
+        if len(name) > 20:
+            raise ValueError("Name must be 20 characters or less.")
 
         self.name = name  # Should not already exist in database
         self.size = size
         self.price = price
         self.cost = cost
         self.quantity = 0
+
+    def __str__(self):
+
+        string = ""  # Base string
+
+        for var in [[self.name, 20], [self.size, 10], [self.price, 10]]:
+            string += str(var[0])
+            for _ in range(var[1] - len(str(var[0]))):
+                string += " "
+            string += " | "
+
+        # Cost
+        string += str(self.size)
 
     def calculate_profit(self, percent=False):
 
@@ -99,20 +118,12 @@ class Warehouse:
 
     def __str__(self):
         string = ""  # Base string
-        nameLength = len(self.name)
-        capacityLength = len(str(self.capacity))
 
-        # Name
-        string += self.name
-        for _ in range(20 - nameLength):
-            string += " "
-        string += " | "
-
-        # Capacity
-        string += str(self.capacity) + "u"
-        for _ in range(10 - capacityLength):
-            string += " "
-        string += " | "
+        for var in [[self.name, 20], [self.capacity, 10]]:
+            string += str(var[0])
+            for _ in range(var[1] - len(str(var[0]))):
+                string += " "
+            string += " | "
 
         # Coordinates
         string += str(self.coordinates)
@@ -146,6 +157,10 @@ class Warehouse:
 
     def edit_coordinates(self, newCoordinates):
         self.coordinates = newCoordinates  # Check if coordinates are being used / exist
+
+    def display_items(self):
+        for item in self.items:
+            print(item)
 
 
 # Database class

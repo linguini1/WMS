@@ -72,7 +72,9 @@ class Warehouse:
             raise ValueError("Storage capacity must be an integer.")
 
         if capacity <= 0:
-            raise ValueError("This value must be greater than 0.")
+            raise ValueError("Capacity must be greater than 0.")
+        elif capacity > 99999999:
+            raise ValueError("Capacity is too large. Try again.")
 
         # Coordinate conversion
         try:
@@ -86,10 +88,36 @@ class Warehouse:
 
         # Coordinate check goes here
 
+        # Name length
+        if len(name) > 20:
+            raise ValueError("Name must be 20 characters or less.")
+
         self.name = name
         self.capacity = capacity
         self.items = []  # Functionality should be added so items can be added from a pre-existing list during init
         self.coordinates = coordinates
+
+    def __str__(self):
+        string = ""  # Base string
+        nameLength = len(self.name)
+        capacityLength = len(str(self.capacity))
+
+        # Name
+        string += self.name
+        for _ in range(20 - nameLength):
+            string += " "
+        string += " | "
+
+        # Capacity
+        string += str(self.capacity) + "u"
+        for _ in range(10 - capacityLength):
+            string += " "
+        string += " | "
+
+        # Coordinates
+        string += str(self.coordinates)
+
+        return string
 
     def save(self):
 

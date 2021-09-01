@@ -4,5 +4,6 @@ from wms import app  # Throws error in Pycharm but works
 
 # Home page
 @app.route("/")
+@app.route("/home")
 def home():
-    return "Hello!"
+    return render_template('home.html')

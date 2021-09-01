@@ -1,0 +1,194 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 3em 2em;
+}
+
+.stats-card {
+  background-color: #036B80;
+  color: #CEEDF3;
+  padding: 1em 2em;
+  border-radius: 3em;
+  width: 500px;
+  overflow: hidden;
+}
+
+.stats-card h1 {
+  font-size: 4em;
+  margin: 0;
+  margin-top: .4em;
+}
+
+.stats-card p {
+  font-size: 1.4em;
+  margin: 0;
+}
+
+.stats-card .main-stats {
+  margin-top: 2em;
+}
+
+.stats-card .main-stats h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.stats-card .main-stats p {
+  font-size: .8em;
+  margin-bottom: 10px;
+}
+
+.stats-card .small-stats h1 {
+  font-size: 1.4em;
+  margin: 0;
+}
+
+.stats-card .small-stats p {
+  font-size: .5em;
+  margin-bottom: 5px;
+}
+
+.stats-card .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.stats-card .view-button {
+  background-color: #09B8DB;
+  border: none;
+  border-radius: 4em;
+  color: #CEEDF3;
+  font-size: 10px;
+  padding: 1.6em 20px;
+  margin: 1.6em 0;
+}
+
+.stats-card .view-button:hover {
+  background-color: #078faa;
+}
+
+.warehouses-preview {
+  margin-left: 2em;
+}
+
+.warehouses-preview h1 {
+  font-size: 4em;
+  color: #09B8DB;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.warehouses-preview .warehouse-carousel ul {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.warehouses-preview .warehouse-carousel ul li {
+  margin-right: 1em;
+}
+
+.warehouses-preview .warehouse-carousel ul :last-child {
+  margin-right: 0;
+}
+
+.warehouses-preview .warehouse-carousel h1, .warehouses-preview .warehouse-carousel h2, .warehouses-preview .warehouse-carousel p {
+  color: #CEEDF3;
+  margin: 0;
+}
+
+.warehouses-preview .warehouse-carousel h1 {
+  font-size: 1.2em;
+  margin-bottom: .6em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.warehouses-preview .warehouse-carousel p {
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+
+.warehouses-preview .warehouse-carousel .warehouse-card {
+  border-radius: 1.5em;
+  background-color: #09B8DB;
+  width: 170px;
+  overflow: hidden;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  padding: 30px;
+  position: relative;
+}
+
+.warehouses-preview .warehouse-carousel button {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: #CEEDF3;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+
+.warehouses-preview .warehouse-carousel button:hover {
+  background-color: #a5dee9;
+}
+
+.warehouses-preview .warehouse-carousel button img {
+  margin-top: 2px;
+  width: 50%;
+}
+
+.warehouses-preview .add-button-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 30px;
+}
+
+.warehouses-preview .add-button {
+  border: none;
+  border-radius: 2em;
+  background-color: #F96A4E;
+  font-size: 20px;
+  font-weight: 800;
+  color: #FAE0DB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  margin-right: 15px;
+  padding: 5px 20px;
+}
+
+.warehouses-preview .add-button:hover {
+  background-color: #f7401d;
+}
+
+.warehouses-preview .add-button img {
+  margin-right: 10px;
+}
+/*# sourceMappingURL=home.css.map */

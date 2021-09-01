@@ -1,0 +1,195 @@
+// Colours
+$deepBlue: #036B80;
+$medBlue: #09B8DB;
+$lightBlue: #CEEDF3;
+$deepOrange: #F96A4E;
+$lightOrange: #FAE0DB;
+
+// Main content
+
+body {
+    display: flex;
+    margin: 3em 2em;
+}
+
+.stats-card {
+    background-color: $deepBlue;
+    color: $lightBlue;
+    padding: 1em 2em;
+    border-radius: 3em;
+    width: 500px;
+    overflow: hidden;
+
+    h1 {
+        font-size: 4em;
+        margin: 0;
+        margin-top: .4em;
+    }
+
+    p {
+        font-size: 1.4em;
+        margin: 0;
+    }
+
+    .main-stats {
+
+        margin-top: 2em;
+        
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        p {
+            font-size: .8em;
+            margin-bottom: 10px;
+        }
+    }
+
+    .small-stats {
+
+        h1 {
+            font-size: 1.4em;
+            margin: 0;
+        }
+
+        p {
+            font-size: .5em;
+            margin-bottom: 5px;
+        }
+
+    }
+
+    .buttons {
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+    }
+
+    .view-button {
+        background-color: $medBlue;
+        border: none;
+        border-radius: 4em;
+        color: $lightBlue;
+        font-size: 10px;
+        padding: 1.6em 20px;
+        margin: 1.6em 0;
+
+        &:hover {
+            background-color: darken($medBlue, 10%);
+        }
+
+    }
+
+}
+
+.warehouses-preview {
+
+    margin-left: 2em;
+    
+    h1 {
+        font-size: 4em;
+        color: $medBlue;
+        margin: 0;
+        margin-bottom: 30px;
+    }
+
+    .warehouse-carousel {
+
+        ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            list-style: none;
+
+            li {
+                margin-right: 1em;
+            }
+
+            :last-child {
+                margin-right: 0;
+            }
+
+        }
+        
+        h1, h2, p {
+            color: $lightBlue;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 1.2em;
+            margin-bottom: .6em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+
+        .warehouse-card {
+            border-radius: 1.5em;
+            background-color: $medBlue;
+            width: 170px;
+            overflow: hidden;
+            justify-content: left;
+            padding: 30px;
+            position: relative;
+        }
+
+        button {
+            border: none;
+            padding: 0;
+            margin: 0;
+            background-color: $lightBlue;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            justify-content: center;
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+
+            &:hover {
+                background-color: darken($lightBlue, 10%);
+            }
+
+            img {
+                margin-top: 2px;
+                width: 50%;
+            }
+        }
+    }
+
+    .add-button-section {
+        display: flex;
+        margin-top: 30px;
+    }
+    
+    .add-button {
+        border: none;
+        border-radius: 2em;
+        background-color: $deepOrange;
+        font-size: 20px;
+        font-weight: 800;
+        color: $lightOrange;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        margin-right: 15px;
+        padding: 5px 20px;
+
+        &:hover {
+            background-color: darken($deepOrange, 10%);
+        }
+
+        img {
+            margin-right: 10px;
+        }
+
+    }
+
+}

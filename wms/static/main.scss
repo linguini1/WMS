@@ -1,0 +1,31 @@
+// Colours
+$deepBlue: #036B80;
+$medBlue: #09B8DB;
+$lightBlue: #CEEDF3;
+$deepOrange: #F96A4E;
+$lightOrange: #FAE0DB;
+
+// Font import
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap');
+
+// Code
+
+// Basic reset
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: $lightBlue;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+a, button {
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+}

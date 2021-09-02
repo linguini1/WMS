@@ -8,4 +8,6 @@ from wms.forms import WarehouseForm
 @app.route("/home", methods=["GET", "POST"])
 def home():
     form = WarehouseForm()
+    if form.validate_on_submit():
+        flash(f'Warehouse "{form.name.data}" created.')
     return render_template('home.html', form=form)

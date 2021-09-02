@@ -24,6 +24,19 @@ img {
   -webkit-user-select: none;
 }
 
+.success {
+  position: absolute;
+  background-color: #F96A4E;
+  color: #FAE0DB;
+  border-radius: 2em;
+  font-size: 30px;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .bg-modal {
   margin: -3em -2em;
   width: 100%;

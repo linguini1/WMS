@@ -40,4 +40,39 @@
     {% block content %}{% endblock content %}
 </body>
 
+<div class="bg-modal">
+    <div class="modal-content">
+
+        <button class="close">+</button>
+
+        <form method="POST" action="">
+            {{form.hidden_tag()}}
+            <fieldset>
+                <div class="form">
+                    {{form.name()}}
+                </div>
+                <div class="form">
+                    {{form.capacity()}}
+                </div>
+                <div class="submit">
+                    <img src="static/checkmark.svg" alt="Checkmark">
+                    {{form.submit()}}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<!---Script for the add warehouse popup-->
+<script>
+    document.getElementById("add-warehouse").addEventListener('click', function() {
+        document.querySelector(".bg-modal").style.display = 'flex';
+    });
+
+    document.querySelector('.close').addEventListener('click', function() {
+        document.querySelector(".bg-modal").style.display = "none";
+    });
+
+</script>
+
 </html>

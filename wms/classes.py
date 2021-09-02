@@ -2,12 +2,12 @@
 
 class Item:
 
-    def __init__(self, name, price, cost, size, quantity, lowThreshold):
+    def __init__(self, name, price, cost, size, lowThreshold):
         self.name = name
         self.price = price
         self.cost = cost
         self.size = size
-        self.quantity = quantity
+        self.quantity = 0
         self.lowThreshold = lowThreshold
 
 

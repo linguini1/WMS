@@ -1,6 +1,6 @@
 # Imports
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField
+from wtforms import StringField, IntegerField, SubmitField, DecimalField
 from wtforms.validators import DataRequired, Length, NumberRange
 
 
@@ -17,3 +17,13 @@ class WarehouseForm(FlaskForm):
                             render_kw={"placeholder": "Capacity"})
 
     submit = SubmitField("Submit")
+
+
+# Item form
+class ItemForm(FlaskForm):
+    name = StringField()
+    price = DecimalField()
+    cost = DecimalField()
+    size = IntegerField()
+    lowThreshold = IntegerField()
+

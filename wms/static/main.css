@@ -52,59 +52,6 @@ img {
   display: none;
 }
 
-.bg-modal .add-warehouse-content {
-  width: 960px;
-  height: 540px;
-  background-color: #CEEDF3;
-  border-radius: 2em;
-  text-align: center;
-  position: relative;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 5em;
-}
-
-.bg-modal .add-warehouse-content .close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 50px;
-  background-color: #F96A4E;
-  border: none;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0;
-  padding: 0;
-  font-weight: 800;
-  color: #FAE0DB;
-}
-
-.bg-modal .add-warehouse-content .close:hover {
-  background-color: #f7401d;
-}
-
-.bg-modal .add-warehouse-content form {
-  margin: 0;
-  border: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.bg-modal .add-warehouse-content form fieldset {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
 .bg-modal .form {
   margin-bottom: 2em;
   margin-right: 0;
@@ -177,5 +124,84 @@ img {
   color: #F96A4E;
   margin: 0;
   margin-top: 10px;
+  font-weight: 500;
+}
+
+.bg-modal .popUp {
+  width: 960px;
+  height: 540px;
+  background-color: #CEEDF3;
+  border-radius: 2em;
+  text-align: center;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5em;
+}
+
+.bg-modal .popUp .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 50px;
+  background-color: #F96A4E;
+  border: none;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
+  color: #FAE0DB;
+}
+
+.bg-modal .popUp .close:hover {
+  background-color: #f7401d;
+}
+
+.bg-modal .popUp form {
+  margin: 0;
+  border: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.bg-modal .popUp form fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-modal .add-items-content {
+  padding: 4em 8em;
+}
+
+.bg-modal .add-items-content input {
+  border-radius: 3em;
+  font-size: 14px;
+}
+
+.bg-modal .add-items-content .form {
+  margin-bottom: 15px;
+}
+
+.bg-modal .add-items-content .item-submit {
+  font-size: 30px;
+}
+
+.bg-modal .add-items-content .error {
+  font-size: 12px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
 }
 /*# sourceMappingURL=main.css.map */

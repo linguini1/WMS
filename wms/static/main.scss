@@ -59,52 +59,7 @@ img {
     align-items: center;
     display: none;  // Hidden by default
 
-    .add-warehouse-content {
-        width: 960px;
-        height: 540px;
-        background-color: $lightBlue;
-        border-radius: 2em;
-        text-align: center;
-        position: relative;
-        box-sizing: border-box;
-        padding: 5em;
-
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 50px;
-            background-color: $deepOrange;
-            border: none;
-            transform: rotate(45deg);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-            font-weight: 800;
-            color: $lightOrange;
-
-            &:hover {
-                background-color: darken($deepOrange, 10%);
-            }
-        }
-
-        form {
-            margin: 0;
-            border: none;
-            justify-content: center;
-            box-sizing: border-box;
-
-            fieldset {
-                border: none;
-                margin: 0;
-                padding: 0;
-            }
-        }
-    }
-
+    // General form styling
     .form {
         margin-bottom: 2em;
         margin-right: 0;
@@ -159,5 +114,81 @@ img {
         color: $deepOrange;
         margin: 0;
         margin-top: 10px;
+        font-weight: 500;
     }
+
+    // For pop-ups
+    .popUp {
+        width: 960px;
+        height: 540px;
+        background-color: $lightBlue;
+        border-radius: 2em;
+        text-align: center;
+        position: relative;
+        box-sizing: border-box;
+        padding: 5em;
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 50px;
+            background-color: $deepOrange;
+            border: none;
+            transform: rotate(45deg);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            font-weight: 800;
+            color: $lightOrange;
+
+            &:hover {
+                background-color: darken($deepOrange, 10%);
+            }
+        }
+
+        form {
+            margin: 0;
+            border: none;
+            justify-content: center;
+            box-sizing: border-box;
+
+            fieldset {
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+
+    // Add items popup window
+    .add-items-content {
+
+        padding: 4em 8em;
+
+        input {
+            border-radius: 3em;
+            font-size: 14px;
+        }
+
+        .form {
+            margin-bottom: 15px;
+        }
+
+        .item-submit {
+            font-size: 30px;
+        }
+
+        .error {
+            font-size: 12px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0;
+        }
+    }
+
 }

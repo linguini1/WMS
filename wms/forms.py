@@ -16,7 +16,7 @@ class WarehouseForm(FlaskForm):
                                         NumberRange(min=100, max=9999999)],
                             render_kw={"placeholder": "Capacity"})
 
-    submit = SubmitField("Submit")
+    submitWarehouse = SubmitField("Submit")
 
 
 # Item form
@@ -42,5 +42,6 @@ class ItemForm(FlaskForm):
     lowThreshold = IntegerField('Low Stock Threshold',
                                 validators=[DataRequired(),
                                             NumberRange(min=1, max=500)],
-                                render_kw={"placeholder": "Low Stock Threshold"})
+                                render_kw={"placeholder": "Low stock threshold"})
+    submitItem = SubmitField("Submit")
 

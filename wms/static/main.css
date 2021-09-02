@@ -52,7 +52,7 @@ img {
   display: none;
 }
 
-.bg-modal .add-items-content {
+.bg-modal .add-warehouse-content {
   width: 960px;
   height: 540px;
   background-color: #CEEDF3;
@@ -61,7 +61,7 @@ img {
   position: relative;
 }
 
-.bg-modal .add-items-content .close {
+.bg-modal .add-warehouse-content .close {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -82,11 +82,11 @@ img {
   color: #FAE0DB;
 }
 
-.bg-modal .add-items-content .close:hover {
+.bg-modal .add-warehouse-content .close:hover {
   background-color: #f7401d;
 }
 
-.bg-modal .add-items-content form {
+.bg-modal .add-warehouse-content form {
   margin: 5em 8em;
   border: none;
   -webkit-box-pack: center;
@@ -96,7 +96,7 @@ img {
           box-sizing: border-box;
 }
 
-.bg-modal .add-items-content form fieldset {
+.bg-modal .add-warehouse-content form fieldset {
   border: none;
   margin: 0;
   padding: 0;
@@ -168,5 +168,11 @@ img {
   font-size: 3em;
   text-transform: uppercase;
   font-weight: 800;
+}
+
+.bg-modal .error {
+  color: #F96A4E;
+  margin: 0;
+  margin-top: 10px;
 }
 /*# sourceMappingURL=main.css.map */

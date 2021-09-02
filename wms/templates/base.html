@@ -41,7 +41,7 @@
 </body>
 
 <div class="bg-modal">
-    <div class="add-items-content">
+    <div class="add-warehouse-content">
 
         <button class="close">+</button>
 
@@ -50,9 +50,19 @@
             <fieldset>
                 <div class="form">
                     {{form.name()}}
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
                 <div class="form">
                     {{form.capacity()}}
+                    {% if form.capacity.errors %}
+                        {% for error in form.capacity.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
                 <div class="submit">
                     <img src="static/checkmark.svg" alt="Checkmark">
@@ -74,13 +84,13 @@
 
             <script>
                 document.querySelector(".bg-modal").style.display = 'flex';
-                document.querySelector(".add-items-content").style.display = 'none';
+                document.querySelector(".add-warehouse-content").style.display = 'none';
 
                 setTimeout(fade_out, 2000);
 
                 function fade_out() {
                     document.querySelector(".bg-modal").style.display = 'none'
-                    document.querySelector(".add-items-content").style.display = 'flex';
+                    document.querySelector(".add-warehouse-content").style.display = 'flex';
                     document.querySelector(".success").style.display = 'none';
                 }
             </script>
@@ -97,7 +107,14 @@
     document.querySelector('.close').addEventListener('click', function() {
         document.querySelector(".bg-modal").style.display = "none";
     });
-
 </script>
+
+<!--Form stays open if there are errors-->
+{% if not form.validate_on_submit() and form.is_submitted() %}
+    <script>
+        document.querySelector(".bg-modal").style.display = 'flex';
+    </script>
+{% endif %}
+
 
 </html>

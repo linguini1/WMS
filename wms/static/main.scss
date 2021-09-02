@@ -59,7 +59,7 @@ img {
     align-items: center;
     display: none;  // Hidden by default
 
-    .add-items-content {
+    .add-warehouse-content {
         width: 960px;
         height: 540px;
         background-color: $lightBlue;
@@ -151,5 +151,11 @@ img {
             font-weight: 800;
         }
 
+    }
+
+    .error {
+        color: $deepOrange;
+        margin: 0;
+        margin-top: 10px;
     }
 }

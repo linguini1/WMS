@@ -66,6 +66,8 @@ img {
         border-radius: 2em;
         text-align: center;
         position: relative;
+        box-sizing: border-box;
+        padding: 5em;
 
         .close {
             position: absolute;
@@ -90,7 +92,7 @@ img {
         }
 
         form {
-            margin: 5em 8em;
+            margin: 0;
             border: none;
             justify-content: center;
             box-sizing: border-box;

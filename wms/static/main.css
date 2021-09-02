@@ -59,6 +59,9 @@ img {
   border-radius: 2em;
   text-align: center;
   position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5em;
 }
 
 .bg-modal .add-warehouse-content .close {
@@ -87,7 +90,7 @@ img {
 }
 
 .bg-modal .add-warehouse-content form {
-  margin: 5em 8em;
+  margin: 0;
   border: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;

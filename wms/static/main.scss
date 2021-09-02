@@ -59,7 +59,7 @@ img {
     align-items: center;
     display: none;  // Hidden by default
 
-    .modal-content {
+    .add-items-content {
         width: 960px;
         height: 540px;
         background-color: $lightBlue;
@@ -95,63 +95,61 @@ img {
             justify-content: center;
             box-sizing: border-box;
 
-            .form {
-                margin-bottom: 2em;
-                margin-right: 0;
-                box-sizing: border-box;
-
-                input {
-                    border: none;
-                    background-color: $deepBlue;
-                    font-size: 3em;
-                    border-radius: 2em;
-                    color: $lightBlue;
-                    width: 100%;
-                    color: $lightBlue;
-                    outline: none;
-                    padding: 20px;
-                    box-sizing: border-box;
-                    
-                    &::placeholder {
-                        color: $lightBlue;
-                    }
-                }
-            }
-
             fieldset {
                 border: none;
                 margin: 0;
                 padding: 0;
             }
-
-            .submit {
-
-                background-color: $deepOrange;
-                font-weight: 800;
-                text-transform: uppercase;
-                display: flex;
-                border-radius: 3em;
-                justify-content: center;
-                padding: 10px 20px;
-                width: fit-content;
-                margin: 0 auto;
-                
-                &:hover {
-                    background-color: darken($deepOrange, 10%);
-                }
-                
-                input {
-                    background-color: transparent;
-                    color: $lightOrange;
-                    border: none;
-                    font-size: 3em;
-                    text-transform: uppercase;
-                    font-weight: 800;
-                }
-
-            }
-
         }
     }
 
+    .form {
+        margin-bottom: 2em;
+        margin-right: 0;
+        box-sizing: border-box;
+
+        input {
+            border: none;
+            background-color: $deepBlue;
+            font-size: 3em;
+            border-radius: 2em;
+            color: $lightBlue;
+            width: 100%;
+            color: $lightBlue;
+            outline: none;
+            padding: 20px;
+            box-sizing: border-box;
+            
+            &::placeholder {
+                color: $lightBlue;
+            }
+        }
+    }
+
+    .submit {
+
+        background-color: $deepOrange;
+        font-weight: 800;
+        text-transform: uppercase;
+        display: flex;
+        border-radius: 3em;
+        justify-content: center;
+        padding: 10px 20px;
+        width: fit-content;
+        margin: 0 auto;
+        
+        &:hover {
+            background-color: darken($deepOrange, 10%);
+        }
+        
+        input {
+            background-color: transparent;
+            color: $lightOrange;
+            border: none;
+            font-size: 3em;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+    }
 }

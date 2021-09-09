@@ -1,7 +1,8 @@
 # Imports
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, DecimalField
-from wtforms.validators import DataRequired, Length, NumberRange
+from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
+from wms.models import Warehouse, ItemTemplate
 
 
 # Warehouse form
@@ -17,6 +18,11 @@ class WarehouseForm(FlaskForm):
                             render_kw={"placeholder": "Capacity"})
 
     submitWarehouse = SubmitField("Submit")
+
+    def validate_name(self, name):
+        name = Warehouse.query.filter_by(name=name.data).first()
+        if name:
+            raise ValidationError("That warehouse name is already in use.")
 
 
 # Item form
@@ -44,4 +50,9 @@ class ItemForm(FlaskForm):
                                             NumberRange(min=1, max=500)],
                                 render_kw={"placeholder": "Low stock threshold"})
     submitItem = SubmitField("Submit")
+
+    def validate_name(self, name):
+        name = ItemTemplate.query.filter_by(name=name.data).first()
+        if name:
+            raise ValidationError("That item name is already in use.")
 

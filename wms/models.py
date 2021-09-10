@@ -38,3 +38,7 @@ class Warehouse(db.Model):
     name = db.Column(db.String(15), unique=True, nullable=False)
     capacity = db.Column(db.Integer, nullable=False)
     items = db.relationship("Item", backref="home_warehouse", lazy=True)
+
+
+db.drop_all()
+db.create_all()

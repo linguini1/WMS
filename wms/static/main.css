@@ -10,6 +10,11 @@ body, html {
 a, button {
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+a:link, button:link {
+  text-decoration: none !important;
 }
 
 input {

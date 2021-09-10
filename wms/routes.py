@@ -17,13 +17,13 @@ def home():
     # Form validation messages
     if warehouseForm.validate_on_submit():
         flash(f'Warehouse "{warehouseForm.name.data}" created.')
-        db.session.add(Warehouse(name=warehouseForm.name.data,
+        db.session.add(Warehouse(name=warehouseForm.name.data.title(),
                                  capacity=warehouseForm.capacity.data))
         db.session.commit()
         print(Warehouse.query.all())
 
     if itemForm.validate_on_submit():
-        db.session.add(ItemTemplate(name=itemForm.name.data,
+        db.session.add(ItemTemplate(name=itemForm.name.data.title(),
                                     price=itemForm.price.data,
                                     cost=itemForm.cost.data,
                                     size=itemForm.size.data,
@@ -33,3 +33,28 @@ def home():
         flash(f'Item "{itemForm.name.data}" created.')
 
     return render_template('home.html', warehouseForm=warehouseForm, itemForm=itemForm)
+
+
+# Warehouses list page
+@app.route("/warehouses", methods=["GET", "POST"])
+def warehouses():
+
+    # Forms
+    warehouseForm = WarehouseForm()
+    itemForm = ItemForm()
+
+    # Information
+    warehouseList = Warehouse.query.all()
+
+    # Form validation messages
+    if warehouseForm.validate_on_submit():
+        flash(f'Warehouse "{warehouseForm.name.data}" created.')
+        db.session.add(Warehouse(name=warehouseForm.name.data,
+                                 capacity=warehouseForm.capacity.data))
+        db.session.commit()
+        print(Warehouse.query.all())
+
+    return render_template('warehouses.html',
+                           warehouseForm=warehouseForm,
+                           itemForm=itemForm,
+                           warehouses=warehouseList)

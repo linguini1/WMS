@@ -2,6 +2,105 @@
 
 {% block content %}
 
+<div class="bg-modal">
+    <div class="add-warehouse-content popUp">
+
+        <button class="close" id="warehouse-close">+</button>
+
+        <form method="POST" action="" autocomplete="off" id="warehouse-form">
+            {{warehouseForm.hidden_tag()}}
+            <fieldset>
+
+                <div class="form">
+                    {{warehouseForm.name()}}
+                    {% if warehouseForm.name.errors %}
+                        {% for error in warehouseForm.name.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{warehouseForm.capacity()}}
+                    {% if warehouseForm.capacity.errors %}
+                        {% for error in warehouseForm.capacity.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="submit">
+                    <img src="static/checkmark.svg" alt="Checkmark">
+                    {{warehouseForm.submitWarehouse()}}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="add-items-content popUp">
+        
+        <button class="close" id="item-close">+</button>
+
+        <form method="post" action="" autocomplete="off" id="item-form">
+            {{itemForm.hidden_tag()}}
+            <fieldset>
+                <div class="form">
+                    {{itemForm.name()}}
+                    {% if itemForm.name.errors %}
+                        {% for error in itemForm.name.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.price()}}
+                    {% if itemForm.price.errors %}
+                        {% for error in itemForm.price.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.cost()}}
+                    {% if itemForm.cost.errors %}
+                        {% for error in itemForm.cost.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.size()}}
+                    {% if itemForm.size.errors %}
+                        {% for error in itemForm.size.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.lowThreshold()}}
+                    {% if itemForm.lowThreshold.errors %}
+                        {% for error in itemForm.lowThreshold.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="submit">
+                    <img src="static/checkmark.svg" alt="Checkmark">
+                    {{itemForm.submitItem(class="item-submit")}}
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+
+</div>
+
 <link rel="stylesheet" href="static/home.css">
 
 <div class="stats-card">
@@ -109,4 +208,75 @@
 
 </div>
 
+<!--Flash messages-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+            <script>
+                document.querySelector(".bg-modal").style.display = 'flex';
+                document.querySelector(".add-warehouse-content").style.display = 'none';
+                document.querySelector(".add-items-content").style.display = 'none';
+
+                setTimeout(fade_out, 2000);
+
+                function fade_out() {
+                    document.querySelector(".success").style.display = 'none';
+                    document.querySelector(".bg-modal").style.display = 'none'
+                }
+            </script>
+
+    {% endif %}
+{% endwith %}
+
+<!---Script for the add warehouse popup-->
+<script>
+    document.getElementById("add-warehouse").addEventListener('click', function() {
+        document.querySelector(".bg-modal").style.display = 'flex';
+        document.querySelector(".add-items-content").style.display = 'none';
+        document.querySelector(".add-warehouse-content").style.display = 'block';
+    });
+
+    document.getElementById('warehouse-close').addEventListener('click', function() {
+        document.querySelector(".bg-modal").style.display = "none";
+    });
+</script>
+
+<!--Script for the add items popup-->
+<script>
+    document.getElementById("add-item").addEventListener('click', function() {
+        document.querySelector(".bg-modal").style.display = 'flex';
+        document.querySelector(".add-warehouse-content").style.display = 'none';
+        document.querySelector(".add-items-content").style.display = 'block';
+    });
+
+    document.getElementById("item-close").addEventListener('click', function() {
+        document.querySelector(".bg-modal").style.display='none';
+    });
+</script>
+
+<!--Warehouse form stays open if there are errors-->
+{% if not warehouseForm.validate() and warehouseForm.submitWarehouse.data %}
+    <script>
+        document.querySelector(".bg-modal").style.display = 'flex';
+        document.querySelector(".add-warehouse-content").style.display = 'block';
+        document.querySelector(".add-items-content").style.display = 'none';
+    </script>
+{% endif %}
+
+<!--Item form stays open if there are errors-->
+{% if not itemForm.validate() and itemForm.submitItem.data %}
+    <script>
+        document.querySelector(".bg-modal").style.display = 'flex';
+        document.querySelector(".add-items-content").style.display = 'block';
+        document.querySelector(".add-warehouse-content").style.display = 'none';
+    </script>
+{% endif %}
+
 {% endblock content %}
+
+

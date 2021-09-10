@@ -14,7 +14,7 @@ class WarehouseForm(FlaskForm):
 
     capacity = IntegerField('Capacity',
                             validators=[DataRequired(),
-                                        NumberRange(min=100, max=9999999)],
+                                        NumberRange(min=100, max=10000000)],
                             render_kw={"placeholder": "Capacity"})
 
     submitWarehouse = SubmitField("Submit")
@@ -33,21 +33,21 @@ class ItemForm(FlaskForm):
                        render_kw={"placeholder": "Name"})
     price = DecimalField('Price',
                          validators=[DataRequired(),
-                                     NumberRange(min=0.01, max=99999.99)],
+                                     NumberRange(min=0.01, max=100000)],
                          render_kw={"placeholder": "Price"},
                          places=2)
     cost = DecimalField('Cost',
                         validators=[DataRequired(),
-                                    NumberRange(min=0.01, max=99999.99)],
+                                    NumberRange(min=0.01, max=100000)],
                         render_kw={"placeholder": "Cost"},
                         places=2)
     size = IntegerField('Size',
                         validators=[DataRequired(),
-                                    NumberRange(min=1, max=500)],
+                                    NumberRange(min=1, max=10000)],
                         render_kw={"placeholder": "Size"})
     lowThreshold = IntegerField('Low Stock Threshold',
                                 validators=[DataRequired(),
-                                            NumberRange(min=1, max=500)],
+                                            NumberRange(min=1, max=10000)],
                                 render_kw={"placeholder": "Low stock threshold"})
     submitItem = SubmitField("Submit")
 

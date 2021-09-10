@@ -144,6 +144,7 @@ img {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 5em;
+  display: none;
 }
 
 .bg-modal .popUp .close {

@@ -21,6 +21,7 @@ def home():
                                  capacity=warehouseForm.capacity.data))
         db.session.commit()
         print(Warehouse.query.all())
+        return redirect(url_for('home'))
 
     if itemForm.validate_on_submit():
         db.session.add(ItemTemplate(name=itemForm.name.data.title(),
@@ -31,6 +32,7 @@ def home():
         db.session.commit()
         print(ItemTemplate.query.all())
         flash(f'Item "{itemForm.name.data}" created.')
+        return redirect(url_for('home'))
 
     return render_template('home.html', warehouseForm=warehouseForm, itemForm=itemForm)
 

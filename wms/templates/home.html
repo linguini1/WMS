@@ -2,6 +2,10 @@
 
 {% block content %}
 
+<script>
+    event.stopPropagation();
+</script>
+
 <div class="bg-modal">
     <div class="add-warehouse-content popUp">
 
@@ -226,8 +230,8 @@
 
                 function fade_out() {
                     document.querySelector(".success").style.display = 'none';
-                    document.querySelector(".bg-modal").style.display = 'none'
-                }
+                    document.querySelector(".bg-modal").style.display = 'none';
+                };
             </script>
 
     {% endif %}

@@ -1,9 +1,53 @@
+<!DOCTYPE html>
+
 {% extends "base.html" %}
 
 {% block content %}
 
 <link rel="stylesheet" href="static/warehouses.css">
 
+<script>
+    event.stopPropagation()
+</script>
+
+<!--Popup-->
+<div class="modal">
+    <div class="add-warehouse-content popUp">
+
+        <button class="close" id="warehouse-close">+</button>
+
+        <form method="POST" action="" autocomplete="off" id="warehouse-form">
+            {{warehouseForm.hidden_tag()}}
+            <fieldset>
+
+                <div class="form">
+                    {{warehouseForm.name()}}
+                    {% if warehouseForm.name.errors %}
+                        {% for error in warehouseForm.name.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{warehouseForm.capacity()}}
+                    {% if warehouseForm.capacity.errors %}
+                        {% for error in warehouseForm.capacity.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="submit">
+                    <img src="static/checkmark.svg" alt="Checkmark">
+                    {{warehouseForm.submitWarehouse()}}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<!--Page content-->
 <div class="content">
     <div class="list">
         <ul>
@@ -69,5 +113,41 @@
         </ul>
     </div>
 </div>
+
+<!--Pop up script-->
+<script>
+    document.getElementById("add-warehouse").addEventListener("click", function() {
+        document.querySelector(".modal").style.display = "flex";
+        document.querySelector(".add-warehouse-content").style.display = "block"
+    })
+
+    document.getElementById("warehouse-close").addEventListener("click", function() {
+        document.querySelector(".modal").style.display = "none";
+    })
+</script>
+
+<!--Flash messages-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+            <script>
+                document.querySelector(".modal").style.display = 'flex';
+                document.querySelector(".add-warehouse-content").style.display = 'none';
+
+                setTimeout(fade_out, 2000);
+
+                function fade_out() {
+                    document.querySelector(".success").style.display = 'none';
+                    document.querySelector(".modal").style.display = 'none';
+                };
+            </script>
+
+    {% endif %}
+{% endwith %}
 
 {% endblock content %}

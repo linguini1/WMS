@@ -190,7 +190,18 @@ body {
   font-size: 20px;
 }
 
-.bg-modal {
+.modal {
   margin: -5em -3em;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=warehouses.css.map */

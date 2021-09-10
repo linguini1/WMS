@@ -23,17 +23,6 @@ def home():
         print(Warehouse.query.all())
         return redirect(url_for('home'))
 
-    if itemForm.validate_on_submit():
-        db.session.add(ItemTemplate(name=itemForm.name.data.title(),
-                                    price=itemForm.price.data,
-                                    cost=itemForm.cost.data,
-                                    size=itemForm.size.data,
-                                    low_threshold=itemForm.lowThreshold.data))
-        db.session.commit()
-        print(ItemTemplate.query.all())
-        flash(f'Item "{itemForm.name.data}" created.')
-        return redirect(url_for('home'))
-
     return render_template('home.html', warehouseForm=warehouseForm, itemForm=itemForm)
 
 
@@ -43,7 +32,6 @@ def warehouses():
 
     # Forms
     warehouseForm = WarehouseForm()
-    itemForm = ItemForm()
 
     # Information
     warehouseList = Warehouse.query.all()
@@ -55,8 +43,8 @@ def warehouses():
                                  capacity=warehouseForm.capacity.data))
         db.session.commit()
         print(Warehouse.query.all())
+        return redirect(url_for('warehouses'))
 
     return render_template('warehouses.html',
                            warehouseForm=warehouseForm,
-                           itemForm=itemForm,
                            warehouses=warehouseList)

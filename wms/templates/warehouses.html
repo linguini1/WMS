@@ -60,15 +60,15 @@
                     <li>
                         <ul class="stats">
                             <li>
-                                <h2>$156,000</h2>
+                                <h2>${{warehouse.possible_revenue}}</h2>
                                 <p>Possible revenue</p>
                             </li>
                             <li>
-                                <h2>2000u</h2>
+                                <h2>{{warehouse.remaining_capacity}}u</h2>
                                 <p>Remaining capacity</p>
                             </li>
                             <li>
-                                <h2>39</h2>
+                                <h2>{{warehouse.items|length}}</h2>
                                 <p>Unique items</p>
                             </li>
                         </ul>
@@ -103,11 +103,13 @@
                 </a>
             </li>
             <li>
-                <h1>14</h1>
+                <h1>{{warehouses|length}}</h1>
                 <p>Warehouses</p>
             </li>
             <li>
-                <h2>$10M</h2>
+                <h2>
+                    ${{possible_revenue}}
+                </h2>
                 <p>Possible revenue</p>
             </li>
         </ul>

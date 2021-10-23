@@ -1,5 +1,6 @@
 # Imports
 from wms import db
+from sqlalchemy.ext.hybrid import hybrid_property
 
 
 # Template for creating items
@@ -39,6 +40,20 @@ class Warehouse(db.Model):
     capacity = db.Column(db.Integer, nullable=False)
     items = db.relationship("Item", backref="home_warehouse", lazy=True)
 
+    @hybrid_property
+    def remaining_capacity(self):
+        capacityUsed = 0
+        for item in self.items:
+            capacityUsed += item.quantity * ItemTemplate.query.filter_by(_id=item.item_template_id).size
+        return self.capacity - capacityUsed
 
-db.drop_all()
+    @hybrid_property
+    def possible_revenue(self):
+        revenue = 0
+        for item in self.items:
+            item_temp = ItemTemplate.query.filter_by(_id=item.item_template_id)
+            revenue += item.quantity * (item_temp.price - item_temp.cost)
+        return revenue
+
+#db.drop_all()
 db.create_all()

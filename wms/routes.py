@@ -20,7 +20,6 @@ def home():
         db.session.add(Warehouse(name=warehouseForm.name.data.title(),
                                  capacity=warehouseForm.capacity.data))
         db.session.commit()
-        print(Warehouse.query.all())
         return redirect(url_for('home'))
 
     return render_template('home.html', warehouseForm=warehouseForm, itemForm=itemForm)
@@ -35,6 +34,9 @@ def warehouses():
 
     # Information
     warehouseList = Warehouse.query.all()
+    possibleRevenue = 0
+    for warehouse in warehouseList:
+        possibleRevenue += warehouse.possible_revenue
 
     # Form validation messages
     if warehouseForm.validate_on_submit():
@@ -42,9 +44,9 @@ def warehouses():
         db.session.add(Warehouse(name=warehouseForm.name.data,
                                  capacity=warehouseForm.capacity.data))
         db.session.commit()
-        print(Warehouse.query.all())
         return redirect(url_for('warehouses'))
 
     return render_template('warehouses.html',
                            warehouseForm=warehouseForm,
-                           warehouses=warehouseList)
+                           warehouses=warehouseList,
+                           possible_revenue=possibleRevenue)

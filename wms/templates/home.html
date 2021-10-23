@@ -110,24 +110,24 @@
 <link rel="stylesheet" href="static/home.css">
 
 <div class="stats-card">
-    <h1>$10M</h1>
+    <h1>${{possibleRevenue}}</h1>
     <p>Total possible revenue</p>
 
     <div class="main-stats">
-        <h1>$5.8M</h1>
+        <h1>${{productionCost}}</h1>
         <p>Total production cost</p>
-        <h1>20,000,000u</h1>
+        <h1>{{remainingCapacity}}u</h1>
         <p>Remaining capacity</p>
     </div>
 
     <div class="small-stats">
-        <h1>14</h1>
+        <h1>{{warehouseList|length}}</h1>
         <p>Locations</p>
 
         <h1>154</h1>
         <p>Unique items</p>
 
-        <h1>Toronto</h1>
+        <h1>{{largestWarehouse}}</h1>
         <p>Largest warehouse</p>
     </div>
 

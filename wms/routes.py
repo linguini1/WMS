@@ -14,6 +14,27 @@ def home():
     warehouseForm = WarehouseForm()
     itemForm = ItemForm()
 
+    # Information
+    warehouseList = Warehouse.query.all()
+
+    try:
+        largest = warehouseList[0]
+
+        for warehouse in warehouseList:
+            if warehouse.capacity > largest.capacity:
+                largest = warehouse
+
+    except IndexError:
+        largest = "No data"
+
+    productionCost = 0
+    remainingCapacity = 0
+    possibleRevenue = 0
+    for warehouse in warehouseList:
+        productionCost += warehouse.total_production_cost
+        remainingCapacity += warehouse.remaining_capacity
+        possibleRevenue += warehouse.possible_revenue
+
     # Form validation messages
     if warehouseForm.validate_on_submit():
         flash(f'Warehouse "{warehouseForm.name.data}" created.')
@@ -22,7 +43,14 @@ def home():
         db.session.commit()
         return redirect(url_for('home'))
 
-    return render_template('home.html', warehouseForm=warehouseForm, itemForm=itemForm)
+    return render_template('home.html',
+                           warehouseForm=warehouseForm,
+                           itemForm=itemForm,
+                           warehouseList=warehouseList,
+                           possibleRevenue=possibleRevenue,
+                           productionCost=productionCost,
+                           remainingCapacity=remainingCapacity,
+                           largestWarehouse=largest.name)
 
 
 # Warehouses list page
@@ -49,4 +77,4 @@ def warehouses():
     return render_template('warehouses.html',
                            warehouseForm=warehouseForm,
                            warehouses=warehouseList,
-                           possible_revenue=possibleRevenue)
+                           possibleRevenue=possibleRevenue)

@@ -55,5 +55,12 @@ class Warehouse(db.Model):
             revenue += item.quantity * (item_temp.price - item_temp.cost)
         return revenue
 
+    @hybrid_property
+    def total_production_cost(self):
+        total_production_cost = 0
+        for item in self.items:
+            total_production_cost += item.quantity * ItemTemplate.query.filter_by(_id=item.item_template_id).cost
+        return total_production_cost
+
 #db.drop_all()
 db.create_all()

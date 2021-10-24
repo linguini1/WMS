@@ -55,7 +55,13 @@
                     </li>
                 </ul>
                 <div class="big-stat">
-                    <h1>0%</h1>
+                    <h1>
+                        {% if warehouse.possible_revenue - warehouse.total_production_cost == 0 %}
+                            0.0%
+                        {% else %}
+                            {{warehouse.total_production_cost / (warehouse.possible_revenue - warehouse.total_production_cost) * 100}}%
+                        {% endif %}
+                    </h1>
                     <p>Profit margin</p>
                 </div>
             </div>
@@ -71,11 +77,11 @@
                         <p>Unique items</p>
                     </li>
                     <li>
-                        <h3>3</h3>
+                        <h3>{{warehouse.low_stock_items|length}}</h3>
                         <p>Low stock</p>
                     </li>
                     <li>
-                        <h3>6</h3>
+                        <h3>{{warehouse.large_scale_items|length}}</h3>
                         <p>Large scale items</p>
                     </li>
                 </ul>
@@ -108,21 +114,17 @@
                 <h1>Edit details</h1>
             </button>
         </div>
-        <a href="{{url_for('home')}}">
+        <a href="{{url_for('warehouses')}}">
             <button class="home-button" id="home-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="33.036" height="32.276" viewBox="0 0 33.036 32.276">
-                <g id="Icon" transform="translate(-3.897 6.026)">
-                  <g id="Path_7" data-name="Path 7" transform="translate(7.803 9.25)" fill="#09b8db">
-                    <path d="M 25.5 13.5 L 0.5 13.5 L 0.5 0.2417105883359909 L 13.07005786895752 -9.721151351928711 L 25.5 0.2400542944669724 L 25.5 13.5 Z" stroke="none"/>
-                    <path d="M 13.06833553314209 -9.081784248352051 L 1 0.4834187030792236 L 1 13 L 25 13 L 25 0.4801082611083984 L 13.06833553314209 -9.081784248352051 M 13.07178020477295 -10.36051940917969 L 26 2.384185791015625e-07 L 26 14 L 0 14 L 0 2.384185791015625e-07 L 13.07178020477295 -10.36051940917969 Z" stroke="none" fill="#09b8db"/>
-                  </g>
-                  <line id="Line_5" data-name="Line 5" y1="12" x2="15" transform="translate(5.303 -4.25)" fill="none" stroke="#09b8db" stroke-linecap="square" stroke-width="2"/>
-                  <line id="Line_6" data-name="Line 6" x1="16" y1="13" transform="translate(20.303 -5.25)" fill="none" stroke="#09b8db" stroke-width="2"/>
-                  <rect id="Rectangle_15" data-name="Rectangle 15" width="10" height="13" rx="3" transform="translate(15.803 13.25)" fill="#ceedf3"/>
-                </g>
-              </svg>
-            <h1>Return home</h1>
-        </button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="70.057" height="51.114" viewBox="0 0 70.057 51.114">
+                    <g id="Back_Arrow" data-name="Back Arrow" transform="translate(-621.443 -538.443)">
+                      <line id="Line_12" data-name="Line 12" x1="58" transform="translate(628.5 564)" fill="none" stroke="#ceedf3" stroke-linecap="round" stroke-width="10"/>
+                      <line id="Line_13" data-name="Line 13" x1="21" y2="18.5" transform="translate(628.5 545.5)" fill="none" stroke="#ceedf3" stroke-linecap="round" stroke-width="10"/>
+                      <line id="Line_14" data-name="Line 14" x1="21" y1="18.5" transform="translate(628.5 564)" fill="none" stroke="#ceedf3" stroke-linecap="round" stroke-width="10"/>
+                    </g>
+                </svg>                  
+                <h1>Warehouse list</h1>
+            </button>
         </a>
         
     </div>

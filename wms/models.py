@@ -73,5 +73,21 @@ class Warehouse(db.Model):
             total_production_cost += item.quantity * ItemTemplate.query.filter_by(_id=item.item_template_id).cost
         return total_production_cost
 
+    @hybrid_property
+    def low_stock_items(self):
+        low_stock = []
+        for item in self.items:
+            if item.quantity <= ItemTemplate.query.filter_by(_id=item.item_template_id).low_threshold:
+                low_stock.append(item)
+        return low_stock
+
+    @hybrid_property
+    def large_scale_items(self):
+        large = []
+        for item in self.items:
+            if ItemTemplate.query.filter_by(_id=item.item_template_id).size >= 150:
+                large.append(item)
+        return large
+
 #db.drop_all()
 db.create_all()

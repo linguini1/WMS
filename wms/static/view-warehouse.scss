@@ -172,10 +172,6 @@ button {
 
     &:hover {
         background-color: darken($medBlue, 10%);
-
-        svg rect {
-            fill: darken($medBlue, 10%);
-        }
     }
 
     h1 {
@@ -190,15 +186,6 @@ button {
         margin-right: 20px;
         width: 80px;
         height: 80px;
-
-        path, line {
-            fill: $lightBlue;
-            stroke: $lightBlue;
-        }
-
-        rect {
-            fill: $medBlue;
-        }
     }
 }
 

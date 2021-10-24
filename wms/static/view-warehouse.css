@@ -183,10 +183,6 @@ button {
   background-color: #078faa;
 }
 
-.home-button:hover svg rect {
-  fill: #078faa;
-}
-
 .home-button h1 {
   text-transform: uppercase;
   color: #CEEDF3;
@@ -199,15 +195,6 @@ button {
   margin-right: 20px;
   width: 80px;
   height: 80px;
-}
-
-.home-button svg path, .home-button svg line {
-  fill: #CEEDF3;
-  stroke: #CEEDF3;
-}
-
-.home-button svg rect {
-  fill: #09B8DB;
 }
 
 .finances {

@@ -81,6 +81,16 @@ body {
         }
     }
 
+    .edit-li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            margin: 0;
+        }
+    }
+
     .edit-button {
         background-color: $lightBlue;
         border-radius: 50%;

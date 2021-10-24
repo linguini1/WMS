@@ -19,10 +19,23 @@ class WarehouseForm(FlaskForm):
 
     submitWarehouse = SubmitField("Submit")
 
+    editing_details = False
+    current_id = None
+
     def validate_name(self, name):
-        name = Warehouse.query.filter_by(name=name.data).first()
-        if name:
-            raise ValidationError("That warehouse name is already in use.")
+
+        if self.editing_details:
+            warehouse_id = Warehouse.query.filter_by(name=name.data).first()._id
+
+            print(warehouse_id, self.current_id)
+
+            if warehouse_id != self.current_id:
+                raise ValidationError("That warehouse name is already in use.")
+
+        else:
+            name = Warehouse.query.filter_by(name=name.data).first()
+            if name:
+                raise ValidationError("That warehouse name is already in use.")
 
 
 # Item form

@@ -124,5 +124,14 @@ def items():
 # Warehouse view page
 @app.route("/view-warehouse/<warehouse_name>", methods=["GET", "POST"])
 def view_warehouse(warehouse_name):
+
+    # Warehouse
+    warehouse = Warehouse.query.filter_by(name=warehouse_name).first()
+
+    # Forms
+    warehouseForm = WarehouseForm()
+    warehouseForm.editing_details = True
+    warehouseForm.current_id = warehouse._id
+
     return render_template("view-warehouse.html",
-                           warehouse=Warehouse.query.filter_by(name=warehouse_name).first())
+                           warehouse=warehouse)

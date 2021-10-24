@@ -19,8 +19,8 @@
         <form method="POST" action="" autocomplete="off" id="warehouse-form">
             {{warehouseForm.hidden_tag()}}
             <fieldset>
-
                 <div class="form">
+
                     {{warehouseForm.name()}}
                     {% if warehouseForm.name.errors %}
                         {% for error in warehouseForm.name.errors %}
@@ -61,7 +61,7 @@
             <li class="warehouse-card">
                 <ul>
                     <li class="name-li">
-                       <h1><a href="{{url_for('view_warehouse', warehouse_name=warehouse.name)}}">{{warehouse.name}}</a></h1>
+                       <h1>{{warehouse.name}}</h1>
                     </li>
                     <li>
                         <ul class="stats">
@@ -79,15 +79,17 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <button class="edit-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="27.181" height="28.436" viewBox="0 0 27.181 28.436">
-                                <g id="Edit_Icon" data-name="Edit Icon" transform="translate(-218.658 -298.529)">
-                                  <path id="Path_1" data-name="Path 1" d="M5.647,0h23.88V6.608H5.647S0,4.979,0,3.327,5.647,0,5.647,0Z" transform="translate(218.658 322.459) rotate(-47)" fill="#09b8db"/>
-                                  <rect id="Rectangle_7" data-name="Rectangle 7" width="6.561" height="2.46" transform="translate(244.161 304.803) rotate(-137)" fill="#09b8db"/>
-                                </g>
-                              </svg>
-                        </button>
+                    <li class="edit-li">
+                        <a href="{{url_for('view_warehouse', warehouse_name=warehouse.name)}}">
+                            <button class="edit-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="27.181" height="28.436" viewBox="0 0 27.181 28.436">
+                                    <g id="Edit_Icon" data-name="Edit Icon" transform="translate(-218.658 -298.529)">
+                                    <path id="Path_1" data-name="Path 1" d="M5.647,0h23.88V6.608H5.647S0,4.979,0,3.327,5.647,0,5.647,0Z" transform="translate(218.658 322.459) rotate(-47)" fill="#09b8db"/>
+                                    <rect id="Rectangle_7" data-name="Rectangle 7" width="6.561" height="2.46" transform="translate(244.161 304.803) rotate(-137)" fill="#09b8db"/>
+                                    </g>
+                                </svg>
+                            </button>
+                        </a>
                     </li>
                 </ul>
             </li>
@@ -147,19 +149,27 @@
             </div>
         {% endfor %}
 
-            <script>
-                document.querySelector(".modal").style.display = 'flex';
-                document.querySelector(".add-warehouse-content").style.display = 'none';
+        <script>
+            document.querySelector(".modal").style.display = 'flex';
+            document.querySelector(".add-warehouse-content").style.display = 'none';
 
-                setTimeout(fade_out, 2000);
+            setTimeout(fade_out, 2000);
 
-                function fade_out() {
-                    document.querySelector(".success").style.display = 'none';
-                    document.querySelector(".modal").style.display = 'none';
-                };
-            </script>
+            function fade_out() {
+                document.querySelector(".success").style.display = 'none';
+                document.querySelector(".modal").style.display = 'none';
+            };
+        </script>
 
     {% endif %}
 {% endwith %}
+
+<!--Warehouse form stays open if there are errors-->
+{% if not warehouseForm.validate() and warehouseForm.submitWarehouse.data %}
+    <script>
+        document.querySelector(".modal").style.display = 'flex';
+        document.querySelector(".add-warehouse-content").style.display = 'block';
+    </script>
+{% endif %}
 
 {% endblock content %}

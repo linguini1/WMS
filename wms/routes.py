@@ -119,3 +119,10 @@ def items():
                            itemForm=itemForm,
                            itemList=itemList,
                            possibleRevenue=possibleRevenue)
+
+
+# Warehouse view page
+@app.route("/view-warehouse/<warehouse_name>", methods=["GET", "POST"])
+def view_warehouse(warehouse_name):
+    return render_template("view-warehouse.html",
+                           warehouse=Warehouse.query.filter_by(name=warehouse_name).first())

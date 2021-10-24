@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='view-warehouse.css')}}">
+
+<script>
+    event.stopPropagation()
+</script>
+
+<h1>{{warehouse.name}}</h1>
+
+<div class="main-content">
+    <div class="left-half">
+        <div class="capacity stats-card">
+            <h2>Capacity</h2>
+            <div class="stats">
+                <ul>
+                    <li>
+                        <h3>{{warehouse.capacity}}u</h3>
+                        <p>Total</p>
+                    </li>
+                    <li>
+                        <h3>{{warehouse.capacity - warehouse.remaining_capacity}}u</h3>
+                        <p>Used</p>
+                    </li>
+                    <li>
+                        <h3>{{warehouse.remaining_capacity}}u</h3>
+                        <p>Remaining</p>
+                    </li>
+                </ul>
+                <div class="big-stat">
+                    <h1>{{(warehouse.capacity - warehouse.remaining_capacity) / warehouse.capacity * 100}}%</h1>
+                    <p>At capacity</p>
+                </div>
+            </div>
+        </div>
+        <div class="finances stats-card">
+            <h2>Finances</h2>
+            <div class="stats">
+                <ul>
+                    <li>
+                        <h3>${{warehouse.possible_revenue}}</h3>
+                        <p>Possible revenue</p>
+                    </li>
+                    <li>
+                        <h3>${{warehouse.possible_revenue - warehouse.total_production_cost}}</h3>
+                        <p>Merchandise price</p>
+                    </li>
+                    <li>
+                        <h3>${{warehouse.total_production_cost}}</h3>
+                        <p>Merchandise cost</p>
+                    </li>
+                </ul>
+                <div class="big-stat">
+                    <h1>0%</h1>
+                    <p>Profit margin</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-half">
+        <div class="items stats-card">
+            <h2>Items</h2>
+            <div class="stats">
+                <ul>
+                    <li>
+                        <h3>{{warehouse.items|length}}</h3>
+                        <p>Unique items</p>
+                    </li>
+                    <li>
+                        <h3>3</h3>
+                        <p>Low stock</p>
+                    </li>
+                    <li>
+                        <h3>6</h3>
+                        <p>Large scale items</p>
+                    </li>
+                </ul>
+                <button class="view-all" id="view-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="99.102" height="45.392" viewBox="0 0 99.102 45.392">
+                        <g id="Eye" transform="translate(-821.029 -239.385)">
+                          <circle id="Ellipse_3" data-name="Ellipse 3" cx="18.692" cy="18.692" r="18.692" transform="translate(853.054 243.388)" fill="#ceedf3"/>
+                          <g id="Path_3" data-name="Path 3" transform="translate(822.977 239.385)" fill="none">
+                            <path d="M49.241,0C75.7,0,97.155,22.7,97.155,22.7s-21.452,22.7-47.914,22.7S-1.948,22.7-1.948,22.7,22.778,0,49.241,0Z" stroke="none"/>
+                            <path d="M 49.24068832397461 5.000003814697266 C 43.80604934692383 5.000003814697266 37.95625305175781 6.084129333496094 31.85381317138672 8.222259521484375 C 26.84896087646484 9.975822448730469 21.67374420166016 12.43463897705078 16.47193908691406 15.53043937683105 C 12.15412139892578 18.10013771057129 8.527992248535156 20.69219589233398 5.918594360351562 22.69828414916992 C 8.482627868652344 24.66938972473145 12.03629302978516 27.2098217010498 16.28925323486328 29.75284004211426 C 21.51284790039062 32.87623977661133 26.71132659912109 35.35831451416016 31.74028778076172 37.13011169433594 C 37.8841438293457 39.29471206665039 43.77214050292969 40.39225769042969 49.24068832397461 40.39225769042969 C 54.63883209228516 40.39225769042969 60.28361511230469 39.32078552246094 66.01821899414062 37.20762252807617 C 70.71348571777344 35.47743988037109 75.47727203369141 33.05067443847656 80.17723083496094 29.99473190307617 C 84.22283935546875 27.3642578125 87.53251647949219 24.7084789276123 89.84433746337891 22.69613075256348 C 87.53251647949219 20.68378257751465 84.22283935546875 18.02800369262695 80.17723083496094 15.39753150939941 C 75.47727203369141 12.34158706665039 70.71348571777344 9.914821624755859 66.01821899414062 8.184638977050781 C 60.28361511230469 6.071475982666016 54.63883209228516 5.000003814697266 49.24068832397461 5.000003814697266 M 49.24068832397461 3.814697265625e-06 C 75.70288848876953 3.814697265625e-06 97.15473937988281 22.69613075256348 97.15473937988281 22.69613075256348 C 97.15473937988281 22.69613075256348 75.70288848876953 45.39225769042969 49.24068832397461 45.39225769042969 C 22.77848815917969 45.39225769042969 -1.947509765625 22.69613075256348 -1.947509765625 22.69613075256348 C -1.947509765625 22.69613075256348 22.77848815917969 3.814697265625e-06 49.24068832397461 3.814697265625e-06 Z" stroke="none" fill="#ceedf3"/>
+                          </g>
+                        </g>
+                      </svg>
+                    <h1>View all</h1>
+                </button>
+            </div>
+        </div>
+        <div class="warehouse-buttons">
+            <button class="add-item" id="add-item">
+                <img src="{{url_for('static', filename='+.svg')}}" alt="+ button">
+                <h1>Add item</h1>
+            </button>
+            <button class="edit-details" id="edit-details">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27.181" height="28.436" viewBox="0 0 27.181 28.436">
+                    <g id="Edit_Icon" data-name="Edit Icon" transform="translate(-218.658 -298.529)">
+                      <path id="Path_1" data-name="Path 1" d="M5.647,0h23.88V6.608H5.647S0,4.979,0,3.327,5.647,0,5.647,0Z" transform="translate(218.658 322.459) rotate(-47)" fill="#09b8db"/>
+                      <rect id="Rectangle_7" data-name="Rectangle 7" width="6.561" height="2.46" transform="translate(244.161 304.803) rotate(-137)" fill="#09b8db"/>
+                    </g>
+                  </svg>
+                <h1>Edit details</h1>
+            </button>
+        </div>
+        <a href="{{url_for('home')}}">
+            <button class="home-button" id="home-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="33.036" height="32.276" viewBox="0 0 33.036 32.276">
+                <g id="Icon" transform="translate(-3.897 6.026)">
+                  <g id="Path_7" data-name="Path 7" transform="translate(7.803 9.25)" fill="#09b8db">
+                    <path d="M 25.5 13.5 L 0.5 13.5 L 0.5 0.2417105883359909 L 13.07005786895752 -9.721151351928711 L 25.5 0.2400542944669724 L 25.5 13.5 Z" stroke="none"/>
+                    <path d="M 13.06833553314209 -9.081784248352051 L 1 0.4834187030792236 L 1 13 L 25 13 L 25 0.4801082611083984 L 13.06833553314209 -9.081784248352051 M 13.07178020477295 -10.36051940917969 L 26 2.384185791015625e-07 L 26 14 L 0 14 L 0 2.384185791015625e-07 L 13.07178020477295 -10.36051940917969 Z" stroke="none" fill="#09b8db"/>
+                  </g>
+                  <line id="Line_5" data-name="Line 5" y1="12" x2="15" transform="translate(5.303 -4.25)" fill="none" stroke="#09b8db" stroke-linecap="square" stroke-width="2"/>
+                  <line id="Line_6" data-name="Line 6" x1="16" y1="13" transform="translate(20.303 -5.25)" fill="none" stroke="#09b8db" stroke-width="2"/>
+                  <rect id="Rectangle_15" data-name="Rectangle 15" width="10" height="13" rx="3" transform="translate(15.803 13.25)" fill="#ceedf3"/>
+                </g>
+              </svg>
+            <h1>Return home</h1>
+        </button>
+        </a>
+        
+    </div>
+</div>
+
+{% endblock content %}

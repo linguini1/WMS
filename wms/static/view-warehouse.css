@@ -1,0 +1,200 @@
+body {
+  margin: 0 2em;
+}
+
+h1 {
+  color: #09B8DB;
+  font-size: 3.5em;
+  margin-bottom: 20px;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main-content .left-half, .main-content .right-half {
+  width: 50%;
+  padding: 1em 0;
+}
+
+.main-content .left-half {
+  padding-right: 1em;
+}
+
+.main-content .right-half {
+  padding-left: 1em;
+}
+
+.stats-card {
+  background-color: #036B80;
+  color: #CEEDF3;
+  border-radius: 40px;
+  padding: 1em 1.5em;
+  margin-bottom: 2em;
+}
+
+.stats-card h3, .stats-card p {
+  margin: 0;
+}
+
+.stats-card h2 {
+  font-size: 1.6em;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.stats-card h3 {
+  font-size: 1.2em;
+}
+
+.stats-card p {
+  font-size: .8em;
+}
+
+.stats-card .stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.stats-card .stats li {
+  margin-bottom: 7px;
+}
+
+.stats-card .big-stat {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.stats-card .big-stat h1 {
+  color: #CEEDF3;
+  font-size: 6em;
+  margin: 0;
+}
+
+.stats-card .big-stat p {
+  margin: 0;
+  font-size: 20px;
+}
+
+button {
+  border: none;
+}
+
+.warehouse-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.warehouse-buttons button {
+  background-color: #F96A4E;
+  text-transform: uppercase;
+  border-radius: 4em;
+  padding: 1em 0;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.warehouse-buttons button img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.warehouse-buttons button svg {
+  margin-right: 10px;
+}
+
+.warehouse-buttons button svg path, .warehouse-buttons button svg rect {
+  fill: #FAE0DB;
+}
+
+.warehouse-buttons .add-item {
+  margin-right: 30px;
+}
+
+.warehouse-buttons h1 {
+  color: #FAE0DB;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.view-all {
+  border-radius: 50%;
+  background-color: #09B8DB;
+  margin: 0 auto;
+  padding: 1.5em;
+}
+
+.view-all h1 {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 800;
+  color: #CEEDF3;
+  margin-bottom: 0;
+}
+
+.home-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #09B8DB;
+  padding: 1em;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4em;
+}
+
+.home-button h1 {
+  text-transform: uppercase;
+  color: #CEEDF3;
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.home-button svg {
+  margin-right: 20px;
+  width: 80px;
+  height: 80px;
+}
+
+.home-button svg path, .home-button svg line {
+  fill: #CEEDF3;
+  stroke: #CEEDF3;
+}
+
+.home-button svg rect {
+  fill: #09B8DB;
+}
+
+.finances {
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=view-warehouse.css.map */

@@ -1,0 +1,190 @@
+// Colours
+$deepBlue: #036B80;
+$medBlue: #09B8DB;
+$lightBlue: #CEEDF3;
+$deepOrange: #F96A4E;
+$lightOrange: #FAE0DB;
+
+// Main content
+body {
+    margin: 0 2em;
+}
+
+h1 {
+    color: $medBlue;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    display: flex;
+
+    .left-half, .right-half {
+        width: 50%;
+        padding: 1em 0;
+    }
+
+    .left-half {
+        padding-right: 1em;
+    }
+
+    .right-half {
+        padding-left: 1em;
+    }
+}
+
+.stats-card {
+    background-color: $deepBlue;
+    color: $lightBlue;
+    border-radius: 40px;
+    padding: 1em 1.5em;
+    margin-bottom: 2em;
+
+    h3, p {
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 1.6em;
+        margin: 0;
+        margin-bottom: 15px;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: .8em;
+    }
+    
+    .stats {
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            margin-bottom: 7px;
+        }
+    }
+
+    .big-stat {
+
+        text-align: center;
+        margin: 0 auto;
+        
+        h1 {
+            color: $lightBlue;
+            font-size: 6em;
+            margin: 0;
+        }
+        
+        p {
+            margin: 0;
+            font-size: 20px;
+        }
+    }
+}
+
+button {
+    border: none;
+}
+
+.warehouse-buttons {
+    display: flex;
+    margin-bottom: 2em;
+    
+    button {
+        background-color: $deepOrange;
+        text-transform: uppercase;
+        border-radius: 4em;
+        padding: 1em 0;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        svg {
+
+            margin-right: 10px;
+
+            path, rect {
+                fill: $lightOrange;
+            }
+        }
+    }
+
+    .add-item {
+        margin-right: 30px;
+    }
+
+    h1 {
+        color: $lightOrange;
+        font-size: 20px;
+        font-weight: 800;
+        margin: 0;
+    }
+}
+
+.view-all {
+
+    border-radius: 50%;
+    background-color: $medBlue;
+    margin: 0 auto;
+    padding: 1.5em;
+
+    h1 {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 800;
+        color: $lightBlue;
+        margin-bottom: 0;
+    }
+}
+
+.home-button {
+    display: flex;
+    background-color: $medBlue;
+    padding: 1em;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4em;
+
+    h1 {
+        text-transform: uppercase;
+        color: $lightBlue;
+        font-size: 40px;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    svg {
+        margin-right: 20px;
+        width: 80px;
+        height: 80px;
+
+        path, line {
+            fill: $lightBlue;
+            stroke: $lightBlue;
+        }
+
+        rect {
+            fill: $medBlue;
+        }
+    }
+}
+
+.finances {
+    margin-bottom: 0;
+}

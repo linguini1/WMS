@@ -42,9 +42,10 @@ body {
   margin-bottom: 20px;
 }
 
-.warehouse-card h1 {
+.warehouse-card h1, .warehouse-card a {
   font-size: 28px;
   margin-right: 20px;
+  color: #CEEDF3;
 }
 
 .warehouse-card ul {

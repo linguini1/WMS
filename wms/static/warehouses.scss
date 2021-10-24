@@ -45,9 +45,10 @@ body {
     padding: 0 30px;
     margin-bottom: 20px;
 
-    h1 {
+    h1, a {
         font-size: 28px;
         margin-right: 20px;
+        color: $lightBlue;
     }
 
     ul {

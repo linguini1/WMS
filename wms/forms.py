@@ -9,7 +9,7 @@ from wms.models import Warehouse, ItemTemplate
 class WarehouseForm(FlaskForm):
     name = StringField('Name',
                        validators=[DataRequired(),
-                                   Length(min=2, max=15)],
+                                   Length(min=2, max=14)],
                        render_kw={"placeholder": "Name"})
 
     capacity = IntegerField('Capacity',

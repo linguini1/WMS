@@ -19,11 +19,10 @@ def home():
 
     try:
         largest = warehouseList[0]
-
         for warehouse in warehouseList:
             if warehouse.capacity > largest.capacity:
                 largest = warehouse
-
+        largest = largest.name
     except IndexError:
         largest = "No data"
 
@@ -60,7 +59,7 @@ def home():
                            possibleRevenue=possibleRevenue,
                            productionCost=productionCost,
                            remainingCapacity=remainingCapacity,
-                           largestWarehouse=largest.name,
+                           largestWarehouse=largest,
                            uniqueItems=len(ItemTemplate.query.all()))
 
 

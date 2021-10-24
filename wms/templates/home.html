@@ -140,64 +140,29 @@
 <div class="warehouses-preview">
     <h1>Warehouses</h1>
     <div class="warehouse-carousel">
-
         <ul>
-            <li>
-                <div class="warehouse-card">
-                    <h1>Ottawa</h1>
-                    
-                    <h2>$156,000</h2>
-                    <p>Possible revenue</p>
+            {% for warehouse in warehouseList[0:3] %}
 
-                    <h2>2,000u</h2>
-                    <p>Remaining capacity</p>
+                <li>
+                    <div class="warehouse-card">
+                        <h1>{{warehouse.name}}</h1>
+                        
+                        <h2>${{warehouse.possible_revenue}}</h2>
+                        <p>Possible revenue</p>
 
-                    <h2>39</h2>
-                    <p>Unique items</p>
+                        <h2>{{warehouse.remaining_capacity}}u</h2>
+                        <p>Remaining capacity</p>
 
-                    <button class="edit-button">
-                        <img src="static/edit-button.svg" alt="Edit button">
-                    </button>
-                </div>
-            </li>
+                        <h2>{{warehouse.items|length}}</h2>
+                        <p>Unique items</p>
 
-            <li>
-                <div class="warehouse-card">
-                    <h1>Toronto</h1>
-                    
-                    <h2>$300,000</h2>
-                    <p>Possible revenue</p>
+                        <button class="edit-button">
+                            <img src="static/edit-button.svg" alt="Edit button">
+                        </button>
+                    </div>
+                </li>
 
-                    <h2>10,000u</h2>
-                    <p>Remaining capacity</p>
-
-                    <h2>64</h2>
-                    <p>Unique items</p>
-
-                    <button class="edit-button">
-                        <img src="static/edit-button.svg" alt="Edit button">
-                    </button>
-                </div>
-            </li>
-
-            <li>
-                <div class="warehouse-card">
-                    <h1>Mississauga</h1>
-                    
-                    <h2>$72,000</h2>
-                    <p>Possible revenue</p>
-
-                    <h2>1,250u</h2>
-                    <p>Remaining capacity</p>
-
-                    <h2>33</h2>
-                    <p>Unique items</p>
-
-                    <button class="edit-button">
-                        <img src="static/edit-button.svg" alt="Edit button">
-                    </button>
-                </div>
-            </li>
+            {% endfor %}
         </ul>
     </div>
 

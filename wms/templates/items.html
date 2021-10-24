@@ -12,27 +12,53 @@
 
 <!--Popup-->
 <div class="modal">
-    <div class="add-warehouse-content popUp">
+    <div class="add-items-content popUp">
+        
+        <button class="close" id="item-close">+</button>
 
-        <button class="close" id="warehouse-close">+</button>
-
-        <form method="POST" action="" autocomplete="off" id="warehouse-form">
-            {{warehouseForm.hidden_tag()}}
+        <form method="post" action="" autocomplete="off" id="item-form">
+            {{itemForm.hidden_tag()}}
             <fieldset>
-
                 <div class="form">
-                    {{warehouseForm.name()}}
-                    {% if warehouseForm.name.errors %}
-                        {% for error in warehouseForm.name.errors %}
+                    {{itemForm.name()}}
+                    {% if itemForm.name.errors %}
+                        {% for error in itemForm.name.errors %}
                             <p class="error">{{ error }}</p>
                         {% endfor %}
                     {% endif %}
                 </div>
 
                 <div class="form">
-                    {{warehouseForm.capacity()}}
-                    {% if warehouseForm.capacity.errors %}
-                        {% for error in warehouseForm.capacity.errors %}
+                    {{itemForm.price()}}
+                    {% if itemForm.price.errors %}
+                        {% for error in itemForm.price.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.cost()}}
+                    {% if itemForm.cost.errors %}
+                        {% for error in itemForm.cost.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.size()}}
+                    {% if itemForm.size.errors %}
+                        {% for error in itemForm.size.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.lowThreshold()}}
+                    {% if itemForm.lowThreshold.errors %}
+                        {% for error in itemForm.lowThreshold.errors %}
                             <p class="error">{{ error }}</p>
                         {% endfor %}
                     {% endif %}
@@ -40,10 +66,12 @@
 
                 <div class="submit">
                     <img src="static/checkmark.svg" alt="Checkmark">
-                    {{warehouseForm.submitWarehouse()}}
+                    {{itemForm.submitItem(class="item-submit")}}
                 </div>
+
             </fieldset>
         </form>
+
     </div>
 </div>
 
@@ -54,28 +82,28 @@
             <li>
                 <button class="add-warehouse" id="add-warehouse">
                     <img src="static/+.svg" alt="+ button">
-                    <h1>Add Warehouse</h1>
+                    <h1>Create Item</h1>
                 </button>
             </li>
-            {% for warehouse in warehouses %}
+            {% for item in itemList %}
             <li class="warehouse-card">
                 <ul>
                     <li class="name-li">
-                        <h1>{{warehouse.name}}</h1>
+                        <h1>{{item.name}}</h1>
                     </li>
                     <li>
                         <ul class="stats">
                             <li>
-                                <h2>${{warehouse.possible_revenue}}</h2>
-                                <p>Possible revenue</p>
+                                <h2>${{item.price}}</h2>
+                                <p>Price</p>
                             </li>
                             <li>
-                                <h2>{{warehouse.remaining_capacity}}u</h2>
-                                <p>Remaining capacity</p>
+                                <h2>{{item.size}}u</h2>
+                                <p>Size</p>
                             </li>
                             <li>
-                                <h2>{{warehouse.items|length}}</h2>
-                                <p>Unique items</p>
+                                <h2>{{item.total_stock}}</h2>
+                                <p>Stock</p>
                             </li>
                         </ul>
                     </li>
@@ -88,7 +116,7 @@
                                 </g>
                               </svg>
                         </button>
-                    </li>
+                    </li> 
                 </ul>
             </li>
             {% endfor %}
@@ -103,8 +131,8 @@
                 </a>
             </li>
             <li>
-                <h1>{{warehouses|length}}</h1>
-                <p>Warehouses</p>
+                <h1>{{itemList|length}}</h1>
+                <p>Unique items</p>
             </li>
             <li>
                 <h2>
@@ -120,10 +148,10 @@
 <script>
     document.getElementById("add-warehouse").addEventListener("click", function() {
         document.querySelector(".modal").style.display = "flex";
-        document.querySelector(".add-warehouse-content").style.display = "block"
+        document.querySelector(".add-item-content").style.display = "block"
     })
 
-    document.getElementById("warehouse-close").addEventListener("click", function() {
+    document.getElementById("item-close").addEventListener("click", function() {
         document.querySelector(".modal").style.display = "none";
     })
 </script>
@@ -139,7 +167,7 @@
 
             <script>
                 document.querySelector(".modal").style.display = 'flex';
-                document.querySelector(".add-warehouse-content").style.display = 'none';
+                document.querySelector(".add-items-content").style.display = 'none';
 
                 setTimeout(fade_out, 2000);
 

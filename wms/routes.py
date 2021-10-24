@@ -43,6 +43,16 @@ def home():
         db.session.commit()
         return redirect(url_for('home'))
 
+    if itemForm.validate_on_submit():
+        flash(f'Item "{itemForm.name.data}" created.')
+        db.session.add(ItemTemplate(name=itemForm.name.data,
+                                    price=itemForm.price.data,
+                                    cost=itemForm.cost.data,
+                                    size=itemForm.size.data,
+                                    low_threshold=itemForm.lowThreshold.data))
+        db.session.commit()
+        return redirect(url_for('home'))
+
     return render_template('home.html',
                            warehouseForm=warehouseForm,
                            itemForm=itemForm,
@@ -50,7 +60,8 @@ def home():
                            possibleRevenue=possibleRevenue,
                            productionCost=productionCost,
                            remainingCapacity=remainingCapacity,
-                           largestWarehouse=largest.name)
+                           largestWarehouse=largest.name,
+                           uniqueItems=len(ItemTemplate.query.all()))
 
 
 # Warehouses list page
@@ -77,4 +88,35 @@ def warehouses():
     return render_template('warehouses.html',
                            warehouseForm=warehouseForm,
                            warehouses=warehouseList,
+                           possibleRevenue=possibleRevenue)
+
+
+# Items list page
+@app.route("/items", methods=["GET", "POST"])
+def items():
+
+    # Forms
+    itemForm = ItemForm()
+
+    # Information
+    itemList = ItemTemplate.query.all()
+
+    possibleRevenue = 0
+    for item in itemList:
+        possibleRevenue += item.possible_revenue
+
+    # Form validation messages
+    if itemForm.validate_on_submit():
+        flash(f'Item "{itemForm.name.data}" created.')
+        db.session.add(ItemTemplate(name=itemForm.name.data,
+                                    price=itemForm.price.data,
+                                    cost=itemForm.cost.data,
+                                    size=itemForm.size.data,
+                                    low_threshold=itemForm.lowThreshold.data))
+        db.session.commit()
+        return redirect(url_for('items'))
+
+    return render_template('items.html',
+                           itemForm=itemForm,
+                           itemList=itemList,
                            possibleRevenue=possibleRevenue)

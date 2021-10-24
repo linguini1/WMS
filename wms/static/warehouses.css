@@ -55,13 +55,18 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding: 0;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   width: 100%;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+}
+
+.warehouse-card ul .name-li {
+  margin-right: auto;
 }
 
 .warehouse-card .stats li {
+  width: 110px;
   margin-right: 25px;
 }
 
@@ -95,7 +100,7 @@ body {
   background-color: #a5dee9;
 }
 
-.add-warehouse {
+.add-warehouse, .add-items {
   background-color: #F96A4E;
   color: #FAE0DB;
   text-transform: uppercase;
@@ -113,19 +118,20 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding: 0;
+  margin-bottom: 20px;
 }
 
-.add-warehouse img {
+.add-warehouse img, .add-items img {
   margin-right: 15px;
   width: 35px;
   height: 35px;
 }
 
-.add-warehouse h1 {
+.add-warehouse h1, .add-items h1 {
   font-size: 28px;
 }
 
-.add-warehouse:hover {
+.add-warehouse:hover, .add-items:hover {
   background-color: #f7401d;
 }
 
@@ -203,5 +209,30 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.add-items-content {
+  padding: 4em 8em;
+}
+
+.add-items-content input {
+  border-radius: 3em;
+  font-size: 14px;
+}
+
+.add-items-content .form {
+  margin-bottom: 15px;
+}
+
+.add-items-content .item-submit {
+  font-size: 30px;
+}
+
+.add-items-content .error {
+  font-size: 12px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
 }
 /*# sourceMappingURL=warehouses.css.map */

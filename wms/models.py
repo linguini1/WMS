@@ -19,6 +19,17 @@ class ItemTemplate(db.Model):
 
     instances = db.relationship('Item', backref='item_template', lazy=True)  # Instances using this item template
 
+    @hybrid_property
+    def total_stock(self):
+        total_stock = 0
+        for instance in self.instances:
+            total_stock += instance.quantity
+        return total_stock
+
+    @hybrid_property
+    def possible_revenue(self):
+        return self.total_stock * (self.price - self.cost)
+
 
 # Actual items
 class Item(db.Model):

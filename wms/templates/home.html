@@ -124,7 +124,7 @@
         <h1>{{warehouseList|length}}</h1>
         <p>Locations</p>
 
-        <h1>154</h1>
+        <h1>{{uniqueItems}}</h1>
         <p>Unique items</p>
 
         <h1>{{largestWarehouse}}</h1>
@@ -133,7 +133,7 @@
 
     <div class="buttons">
         <a href="{{url_for('warehouses')}}" class="view-button">View warehouses</a>
-        <a href="" class="view-button">View items</a>
+        <a href="{{url_for('items')}}" class="view-button">View items</a>
     </div>
 </div>
 

@@ -176,7 +176,11 @@ body {
   background-color: #a5dee9;
 }
 
-.warehouse-stats a img {
+.warehouse-stats a:hover svg rect {
+  fill: #a5dee9;
+}
+
+.warehouse-stats a svg {
   width: 30px;
   height: 30px;
   display: inline-block;

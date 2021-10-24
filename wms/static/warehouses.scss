@@ -161,9 +161,14 @@ body {
 
         &:hover {
             background-color: darken($lightBlue, 10%);
+
+            svg rect {
+                fill: darken($lightBlue, 10%);
+            }
+
         }
 
-        img {
+        svg {
             width: 30px;
             height: 30px;
             display: inline-block;

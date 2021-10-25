@@ -3,6 +3,7 @@ from flask import render_template, url_for, flash, redirect
 from wms import app, db  # Throws error in Pycharm but works
 from wms.forms import WarehouseForm, ItemForm, AddItemForm
 from wms.models import Warehouse, Item, ItemTemplate
+from wms.functions import *
 
 
 # Home page
@@ -60,7 +61,9 @@ def home():
                            productionCost=productionCost,
                            remainingCapacity=remainingCapacity,
                            largestWarehouse=largest,
-                           uniqueItems=len(ItemTemplate.query.all()))
+                           uniqueItems=len(ItemTemplate.query.all()),
+                           price_format=price_format,
+                           capacity_format=capacity_format)
 
 
 # Warehouses list page
@@ -87,7 +90,9 @@ def warehouses():
     return render_template('warehouses.html',
                            warehouseForm=warehouseForm,
                            warehouses=warehouseList,
-                           possibleRevenue=possibleRevenue)
+                           possibleRevenue=possibleRevenue,
+                           price_format=price_format,
+                           capacity_format=capacity_format)
 
 
 # Items list page
@@ -118,7 +123,9 @@ def items():
     return render_template('items.html',
                            itemForm=itemForm,
                            itemList=itemList,
-                           possibleRevenue=possibleRevenue)
+                           possibleRevenue=possibleRevenue,
+                           price_format=price_format,
+                           capacity_format=capacity_format)
 
 
 # Warehouse view page
@@ -154,4 +161,6 @@ def view_warehouse(warehouse_name):
     return render_template("view-warehouse.html",
                            warehouse=warehouse,
                            warehouseForm=warehouseForm,
-                           itemForm=itemForm)
+                           itemForm=itemForm,
+                           price_format=price_format,
+                           capacity_format=capacity_format)

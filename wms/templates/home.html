@@ -110,13 +110,13 @@
 <link rel="stylesheet" href="static/home.css">
 
 <div class="stats-card">
-    <h1>${{possibleRevenue}}</h1>
+    <h1>${{price_format(possibleRevenue, small=True)}}</h1>
     <p>Total possible revenue</p>
 
     <div class="main-stats">
-        <h1>${{productionCost}}</h1>
+        <h1>${{price_format(productionCost)}}</h1>
         <p>Total production cost</p>
-        <h1>{{remainingCapacity}}u</h1>
+        <h1>{{capacity_format(remainingCapacity)}}u</h1>
         <p>Remaining capacity</p>
     </div>
 
@@ -147,10 +147,10 @@
                     <div class="warehouse-card">
                         <h1>{{warehouse.name}}</h1>
                         
-                        <h2>${{warehouse.possible_revenue}}</h2>
+                        <h2>${{price_format(warehouse.possible_revenue)}}</h2>
                         <p>Possible revenue</p>
 
-                        <h2>{{warehouse.remaining_capacity}}u</h2>
+                        <h2>{{capacity_format(warehouse.remaining_capacity)}}u</h2>
                         <p>Remaining capacity</p>
 
                         <h2>{{warehouse.items|length}}</h2>

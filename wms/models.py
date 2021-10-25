@@ -2,6 +2,10 @@
 from wms import db
 from sqlalchemy.ext.hybrid import hybrid_property
 
+# Constants
+MAXIMUM_NAME_LEN = 14
+LARGE_SCALE_SIZE = 150
+
 
 # Template for creating items
 class ItemTemplate(db.Model):
@@ -11,7 +15,7 @@ class ItemTemplate(db.Model):
     will inherit this information from the item templates."""
 
     _id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(15), unique=True, nullable=False)
+    name = db.Column(db.String(MAXIMUM_NAME_LEN), unique=True, nullable=False)
     price = db.Column(db.Float, nullable=False)
     cost = db.Column(db.Float, nullable=False)
     size = db.Column(db.Integer, nullable=False)
@@ -38,7 +42,7 @@ class Item(db.Model):
 
     _id = db.Column(db.Integer, primary_key=True)
     quantity = db.Column(db.Integer, nullable=False)
-    warehouse = db.Column(db.String(15), db.ForeignKey('warehouse.name'), nullable=False)
+    warehouse = db.Column(db.String(MAXIMUM_NAME_LEN), db.ForeignKey('warehouse.name'), nullable=False)
 
     item_template_id = db.Column(db.Integer, db.ForeignKey('item_template._id'), nullable=False)
 
@@ -47,7 +51,7 @@ class Item(db.Model):
 class Warehouse(db.Model):
 
     _id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(14), unique=True, nullable=False)
+    name = db.Column(db.String(MAXIMUM_NAME_LEN), unique=True, nullable=False)
     capacity = db.Column(db.Integer, nullable=False)
     items = db.relationship("Item", backref="home_warehouse", lazy=True)
 
@@ -85,7 +89,7 @@ class Warehouse(db.Model):
     def large_scale_items(self):
         large = []
         for item in self.items:
-            if ItemTemplate.query.filter_by(_id=item.item_template_id).first().size >= 150:
+            if ItemTemplate.query.filter_by(_id=item.item_template_id).first().size >= LARGE_SCALE_SIZE:
                 large.append(item)
         return large
 

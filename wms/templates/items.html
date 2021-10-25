@@ -94,11 +94,11 @@
                     <li>
                         <ul class="stats">
                             <li>
-                                <h2>${{item.price}}</h2>
+                                <h2>${{price_format(item.price)}}</h2>
                                 <p>Price</p>
                             </li>
                             <li>
-                                <h2>{{item.size}}u</h2>
+                                <h2>{{capacity_format(item.size)}}u</h2>
                                 <p>Size</p>
                             </li>
                             <li>
@@ -146,7 +146,7 @@
             </li>
             <li>
                 <h2>
-                    ${{possibleRevenue}}
+                    ${{price_format(possibleRevenue)}}
                 </h2>
                 <p>Possible revenue</p>
             </li>

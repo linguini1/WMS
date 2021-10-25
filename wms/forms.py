@@ -103,7 +103,7 @@ class AddItemForm(FlaskForm):
     def update_choices(self):
         self.item_name.choices = [item.name for item in ItemTemplate.query.all()]
 
-    def validate_quantity(self, quantity, item_name):
-        item_size = ItemTemplate.query.filter_by(name=item_name).first().size
-        if self.warehouse.remaining_capacity < quantity * item_size:
-            raise ValidationError(f"Needs {quantity * item_size - self.warehouse.remaining_capacity}u more space.")
+    def validate_quantity(self, quantity):
+        item_size = ItemTemplate.query.filter_by(name=self.item_name.data).first().size
+        if self.warehouse.remaining_capacity < quantity.data * item_size:
+            raise ValidationError(f"Needs {quantity.data * item_size - self.warehouse.remaining_capacity}u more space.")

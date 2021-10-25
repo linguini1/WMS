@@ -125,8 +125,6 @@ def items():
 @app.route("/view-warehouse/<warehouse_name>", methods=["GET", "POST"])
 def view_warehouse(warehouse_name):
 
-    print("called")
-
     # Warehouse
     warehouse = Warehouse.query.filter_by(name=warehouse_name).first()
 
@@ -143,6 +141,13 @@ def view_warehouse(warehouse_name):
     if warehouseForm.validate_on_submit():
         warehouse.name = warehouseForm.name.data
         warehouse.capacity = warehouseForm.capacity.data
+        db.session.commit()
+        return redirect(url_for('view_warehouse', warehouse_name=warehouse.name))
+
+    if itemForm.validate_on_submit():
+        db.session.add(Item(quantity=itemForm.quantity.data,
+                            warehouse=warehouse.name,
+                            item_template_id=ItemTemplate.query.filter_by(name=itemForm.item_name.data).first()._id))
         db.session.commit()
         return redirect(url_for('view_warehouse', warehouse_name=warehouse.name))
 

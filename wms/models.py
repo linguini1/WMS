@@ -55,14 +55,14 @@ class Warehouse(db.Model):
     def remaining_capacity(self):
         capacityUsed = 0
         for item in self.items:
-            capacityUsed += item.quantity * ItemTemplate.query.filter_by(_id=item.item_template_id).size
+            capacityUsed += item.quantity * ItemTemplate.query.filter_by(_id=item.item_template_id).first().size
         return self.capacity - capacityUsed
 
     @hybrid_property
     def possible_revenue(self):
         revenue = 0
         for item in self.items:
-            item_temp = ItemTemplate.query.filter_by(_id=item.item_template_id)
+            item_temp = ItemTemplate.query.filter_by(_id=item.item_template_id).first()
             revenue += item.quantity * (item_temp.price - item_temp.cost)
         return revenue
 
@@ -70,14 +70,14 @@ class Warehouse(db.Model):
     def total_production_cost(self):
         total_production_cost = 0
         for item in self.items:
-            total_production_cost += item.quantity * ItemTemplate.query.filter_by(_id=item.item_template_id).cost
+            total_production_cost += item.quantity * ItemTemplate.query.filter_by(_id=item.item_template_id).first().cost
         return total_production_cost
 
     @hybrid_property
     def low_stock_items(self):
         low_stock = []
         for item in self.items:
-            if item.quantity <= ItemTemplate.query.filter_by(_id=item.item_template_id).low_threshold:
+            if item.quantity <= ItemTemplate.query.filter_by(_id=item.item_template_id).first().low_threshold:
                 low_stock.append(item)
         return low_stock
 
@@ -85,7 +85,7 @@ class Warehouse(db.Model):
     def large_scale_items(self):
         large = []
         for item in self.items:
-            if ItemTemplate.query.filter_by(_id=item.item_template_id).size >= 150:
+            if ItemTemplate.query.filter_by(_id=item.item_template_id).first().size >= 150:
                 large.append(item)
         return large
 

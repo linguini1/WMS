@@ -133,5 +133,13 @@ def view_warehouse(warehouse_name):
     warehouseForm.editing_details = True
     warehouseForm.current_id = warehouse._id
 
+    # Form validation messages
+    if warehouseForm.validate_on_submit():
+        warehouse.name = warehouseForm.name.data
+        warehouse.capacity = warehouseForm.capacity.data
+        db.session.commit()
+        return redirect(url_for('view_warehouse', warehouse_name=warehouse.name))
+
     return render_template("view-warehouse.html",
-                           warehouse=warehouse)
+                           warehouse=warehouse,
+                           warehouseForm=warehouseForm)

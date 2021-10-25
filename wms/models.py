@@ -93,5 +93,9 @@ class Warehouse(db.Model):
                 large.append(item)
         return large
 
+    @hybrid_property
+    def item_names(self):
+        return [ItemTemplate.query.filter_by(_id=item.item_template_id).first().name for item in self.items]
+
 #db.drop_all()
 db.create_all()

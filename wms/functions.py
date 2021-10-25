@@ -44,7 +44,7 @@ def capacity_format(capacity):
         return "{:,}".format(capacity)
     elif 10000 <= capacity <= 999999:
         capacity /= 1000
-        return "{:.2f}M".format(capacity)
+        return "{:.2f}K".format(capacity)
     else:
         capacity /= 1000000
         return "{:.2f}M".format(capacity)

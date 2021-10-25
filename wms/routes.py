@@ -152,9 +152,16 @@ def view_warehouse(warehouse_name):
         return redirect(url_for('view_warehouse', warehouse_name=warehouse.name))
 
     if itemForm.validate_on_submit():
-        db.session.add(Item(quantity=itemForm.quantity.data,
-                            warehouse=warehouse.name,
-                            item_template_id=ItemTemplate.query.filter_by(name=itemForm.item_name.data).first()._id))
+
+        # If warehouse already has this item, add to stock
+        if itemForm.item_name.data in warehouse.item_names:
+            index = warehouse.item_names.index(itemForm.item_name.data)
+            warehouse.items[index].quantity += itemForm.quantity.data
+        else:  # New item being added
+            db.session.add(Item(quantity=itemForm.quantity.data,
+                                warehouse=warehouse.name,
+                                item_template_id=ItemTemplate.query.filter_by(name=itemForm.item_name.data).first()._id))
+
         db.session.commit()
         return redirect(url_for('view_warehouse', warehouse_name=warehouse.name))
 

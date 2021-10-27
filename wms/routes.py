@@ -5,10 +5,13 @@ from wms.forms import WarehouseForm, ItemForm, AddItemForm
 from wms.models import Warehouse, Item, ItemTemplate
 from wms.functions import *
 
+# Constants
+METHODS = ["GET", "POST"]
+
 
 # Home page
-@app.route("/", methods=["GET", "POST"])
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/", methods=METHODS)
+@app.route("/home", methods=METHODS)
 def home():
 
     # Forms
@@ -67,7 +70,7 @@ def home():
 
 
 # Warehouses list page
-@app.route("/warehouses", methods=["GET", "POST"])
+@app.route("/warehouses", methods=METHODS)
 def warehouses():
 
     # Forms
@@ -96,7 +99,7 @@ def warehouses():
 
 
 # Items list page
-@app.route("/items", methods=["GET", "POST"])
+@app.route("/items", methods=METHODS)
 def items():
 
     # Forms
@@ -129,7 +132,7 @@ def items():
 
 
 # Warehouse view page
-@app.route("/view-warehouse/<warehouse_name>", methods=["GET", "POST"])
+@app.route("/view-warehouse/<warehouse_name>", methods=METHODS)
 def view_warehouse(warehouse_name):
 
     # Warehouse
@@ -171,3 +174,20 @@ def view_warehouse(warehouse_name):
                            itemForm=itemForm,
                            price_format=price_format,
                            capacity_format=capacity_format)
+
+
+# Item view page
+@app.route("/view-item/<item_name>", methods=METHODS)
+def view_item(item_name):
+
+    # Item
+    item = ItemTemplate.query.filter_by(name=item_name).first()
+
+    # Forms
+    itemForm = ItemForm()
+
+    return render_template("view-item.html",
+                           item=item,
+                           price_format=price_format,
+                           capacity_format=capacity_format,
+                           itemForm=itemForm)

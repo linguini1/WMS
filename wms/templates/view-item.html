@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='view-item.css')}}">
+
+<div class="modal">
+    <div class="add-items-content popUp">
+        
+        <button class="close" id="item-close">+</button>
+
+        <form method="post" action="" autocomplete="off" id="item-form">
+            {{itemForm.hidden_tag()}}
+            <fieldset>
+                <div class="form">
+                    {{itemForm.name()}}
+                    {% if itemForm.name.errors %}
+                        {% for error in itemForm.name.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.price()}}
+                    {% if itemForm.price.errors %}
+                        {% for error in itemForm.price.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.cost()}}
+                    {% if itemForm.cost.errors %}
+                        {% for error in itemForm.cost.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.size()}}
+                    {% if itemForm.size.errors %}
+                        {% for error in itemForm.size.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.lowThreshold()}}
+                    {% if itemForm.lowThreshold.errors %}
+                        {% for error in itemForm.lowThreshold.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="submit">
+                    <img src="{{url_for('static', filename='checkmark.svg')}}" alt="Checkmark">
+                    {{itemForm.submitItem(class="item-submit")}}
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+
+</div>
+
+<h1>{{item.name}}</h1>
+
+<div class="main-content">
+    <div class="left-half">
+        <div class="stats">
+            <ul class="top-row">
+                <li>
+                    <h2>${{price_format(item.price)}}</h2>
+                    <p>Price</p>
+                </li>
+                <li>
+                    <h2>${{price_format(item.cost)}}</h2>
+                    <p>Cost</p>
+                </li>
+                <li>
+                    <h2>{{capacity_format(item.size)}}u</h2>
+                    <p>Size</p>
+                </li>
+            </ul>
+            <ul class="bottom-row">
+                <li>
+                    <h2>{{capacity_format(item.stock)}}</h2>
+                    <p>Stock</p>
+                </li>
+                <li>
+                    <h2>{{capacity_format(item.low_threshold)}}</h2>
+                    <p>Low stock threshold</p>
+                </li>
+            </ul>
+        </div>
+        <button class="edit-item" id="edit-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27.181" height="28.436" viewBox="0 0 27.181 28.436">
+                <g id="Edit_Icon" data-name="Edit Icon" transform="translate(-218.658 -298.529)">
+                  <path id="Path_1" data-name="Path 1" d="M5.647,0h23.88V6.608H5.647S0,4.979,0,3.327,5.647,0,5.647,0Z" transform="translate(218.658 322.459) rotate(-47)" fill="#09b8db"/>
+                  <rect id="Rectangle_7" data-name="Rectangle 7" width="6.561" height="2.46" transform="translate(244.161 304.803) rotate(-137)" fill="#09b8db"/>
+                </g>
+            </svg>
+            <h1>Edit Item Details</h1>
+        </button>
+    </div>
+    <div class="right-half">
+        <div class="sold-at">
+            <h1>Sold at</h1>
+            <ul class="warehouse-list">
+                {% for warehouse_name in item.warehouses %}
+                    <li>
+                        {{warehouse_name}}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--Script for the add items popup-->
+<script>
+    document.getElementById("edit-item").addEventListener('click', function() {
+        document.querySelector(".modal").style.display = 'flex';
+        document.querySelector(".add-items-content").style.display = 'block';
+    });
+
+    document.getElementById("item-close").addEventListener('click', function() {
+        document.querySelector(".modal").style.display='none';
+    });
+</script>
+
+<!--Item form stays open if there are errors-->
+{% if not itemForm.validate() and itemForm.submitItem.data %}
+    <script>
+        document.querySelector(".modal").style.display = 'flex';
+        document.querySelector(".add-items-content").style.display = 'block';
+    </script>
+{% endif %}
+
+{% endblock content %}

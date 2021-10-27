@@ -4,10 +4,6 @@
 
 {% block content %}
 
-<script>
-    event.stopPropagation();
-</script>
-
 <div class="bg-modal">
     <div class="add-warehouse-content popUp">
 
@@ -156,9 +152,11 @@
                         <h2>{{warehouse.items|length}}</h2>
                         <p>Unique items</p>
 
-                        <button class="edit-button">
-                            <img src="static/edit-button.svg" alt="Edit button">
-                        </button>
+                        <a href="{{url_for('view_warehouse', warehouse_name=warehouse.name)}}">
+                            <button class="edit-button">
+                                <img src="static/edit-button.svg" alt="Edit button">
+                            </button>
+                        </a>                        
                     </div>
                 </li>
 

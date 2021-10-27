@@ -34,6 +34,17 @@ class ItemTemplate(db.Model):
     def possible_revenue(self):
         return self.total_stock * (self.price - self.cost)
 
+    @hybrid_property
+    def warehouses(self):
+        return [instance.warehouse for instance in self.instances]
+
+    @hybrid_property
+    def stock(self):
+        stock = 0
+        for instance in self.instances:
+            stock += instance.quantity
+        return stock
+
 
 # Actual items
 class Item(db.Model):

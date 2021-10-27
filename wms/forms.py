@@ -78,10 +78,24 @@ class ItemForm(FlaskForm):
                                 render_kw={"placeholder": "Low stock threshold"})
     submitItem = SubmitField("Submit")
 
+    editing_details = False
+    current_id = None
+
     def validate_name(self, name):
-        name = ItemTemplate.query.filter_by(name=name.data).first()
-        if name:
-            raise ValidationError("That item name is already in use.")
+        if self.editing_details:
+            matching_item = ItemTemplate.query.filter_by(name=name.data).first()
+
+            try:
+                item_id = matching_item._id
+                if item_id != self.current_id:
+                    raise ValidationError("That item name is already in use.")
+            except AttributeError:
+                pass
+
+        else:
+            name = ItemTemplate.query.filter_by(name=name.data).first()
+            if name:
+                raise ValidationError("That item name is already in use.")
 
 
 # Add item to warehouse form

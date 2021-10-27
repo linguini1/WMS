@@ -185,6 +185,18 @@ def view_item(item_name):
 
     # Forms
     itemForm = ItemForm()
+    itemForm.editing_details = True
+    itemForm.current_id = item._id
+
+    # Form validation
+    if itemForm.validate_on_submit():
+        item.name = itemForm.name.data
+        item.price = itemForm.price.data
+        item.cost = itemForm.cost.data
+        item.size = itemForm.size.data
+        item.low_threshold = itemForm.lowThreshold.data
+        db.session.commit()
+        return redirect(url_for('view_item', item_name=item.name))
 
     return render_template("view-item.html",
                            item=item,

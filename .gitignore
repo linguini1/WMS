@@ -1,1 +1,2 @@
-# Placeholder
+# Don't add database to commit
+*.db

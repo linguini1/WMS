@@ -39,7 +39,7 @@ ul, li {
   color: #CEEDF3;
   border-radius: 3em;
   padding: 3em;
-  margin-bottom: 4.3em;
+  margin-bottom: 2em;
 }
 
 .stats ul {
@@ -53,26 +53,19 @@ ul, li {
 
 .stats ul h2 {
   margin: 0;
+  font-size: 35px;
 }
 
 .stats ul p {
   margin: 0;
 }
 
-.stats .top-row {
-  margin-bottom: 3em;
-}
-
-.stats .top-row h2 {
-  font-size: 35px;
-}
-
 .stats .bottom-row h2 {
-  font-size: 50px;
+  font-size: 45px;
 }
 
-.stats .bottom-row p {
-  font-size: 25px;
+.stats .top-row {
+  margin-bottom: 1.8em;
 }
 
 .edit-item {
@@ -89,19 +82,22 @@ ul, li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 2em;
+  padding: 1.2em;
 }
 
 .edit-item h1 {
   color: #FAE0DB;
   text-transform: uppercase;
   font-weight: 800;
-  font-size: 35px;
+  font-size: 20px;
+  margin: 0;
 }
 
 .edit-item svg {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
 }
 
 .edit-item svg path, .edit-item svg rect {
@@ -110,6 +106,41 @@ ul, li {
 
 .edit-item:hover {
   background-color: #f7401d;
+}
+
+.home-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #09B8DB;
+  padding: 1em;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4em;
+  border: none;
+}
+
+.home-button:hover {
+  background-color: #078faa;
+}
+
+.home-button h1 {
+  text-transform: uppercase;
+  color: #CEEDF3;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.home-button svg {
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .modal {

@@ -63,6 +63,23 @@ ul, li {
     align-items: center;
 }
 
+.add-items-content {
+    select {
+        font-family: 'Montserrat', serif;
+        background-color: $deepBlue;
+        color: $lightBlue;
+        border: none;
+        border-radius: 10em;
+        padding: 20px;
+        font-size: 3em;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
 .main-content {
     display: flex;
 

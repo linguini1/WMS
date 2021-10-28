@@ -1,9 +1,10 @@
+print("routes.py")
 # Imports
 from flask import render_template, url_for, flash, redirect
-from wms import app, db  # Throws error in Pycharm but works
+from wms import app, db
 from wms.forms import WarehouseForm, ItemForm, AddItemForm
 from wms.models import Warehouse, Item, ItemTemplate
-from wms.functions import *
+from wms.functions import price_format, capacity_format
 
 # Constants
 METHODS = ["GET", "POST"]
@@ -141,7 +142,7 @@ def view_warehouse(warehouse_name):
     # Forms
     warehouseForm = WarehouseForm()
     warehouseForm.editing_details = True
-    warehouseForm.current_id = warehouse._id
+    warehouseForm.current_id = warehouse.id
 
     itemForm = AddItemForm()
     itemForm.update_choices()
@@ -163,7 +164,7 @@ def view_warehouse(warehouse_name):
         else:  # New item being added
             db.session.add(Item(quantity=itemForm.quantity.data,
                                 warehouse=warehouse.name,
-                                item_template_id=ItemTemplate.query.filter_by(name=itemForm.item_name.data).first()._id))
+                                item_template_id=ItemTemplate.query.filter_by(name=itemForm.item_name.data).first().id))
 
         db.session.commit()
         return redirect(url_for('view_warehouse', warehouse_name=warehouse.name))
@@ -186,7 +187,7 @@ def view_item(item_name):
     # Forms
     itemForm = ItemForm()
     itemForm.editing_details = True
-    itemForm.current_id = item._id
+    itemForm.current_id = item.id
 
     # Form validation
     if itemForm.validate_on_submit():

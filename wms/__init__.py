@@ -1,3 +1,4 @@
+print("init.py")
 # Imports
 from flask import Flask
 from flaskwebgui import FlaskUI
@@ -21,4 +22,4 @@ desktopApp = FlaskUI(app,
                      height=675,
                      browser_path='C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
 
-from wms import routes  # Throws error in PyCharm but works
+from wms import routes

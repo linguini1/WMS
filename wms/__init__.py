@@ -1,4 +1,3 @@
-print("init.py")
 # Imports
 from flask import Flask
 from flaskwebgui import FlaskUI
@@ -15,11 +14,14 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # Removes warning message 
 
 # Database config
 db = SQLAlchemy(app)
+from wms.models import Warehouse, Item, ItemTemplate
+db.create_all()
 
 # Desktop UI config
 desktopApp = FlaskUI(app,
                      width=1200,
                      height=675,
                      browser_path='C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
+
 
 from wms import routes

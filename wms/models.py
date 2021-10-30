@@ -1,4 +1,3 @@
-print("models.py")
 # Imports
 from wms import db
 from sqlalchemy.ext.hybrid import hybrid_property
@@ -108,7 +107,3 @@ class Warehouse(db.Model):
     @hybrid_property
     def item_names(self):
         return [ItemTemplate.query.filter_by(id=item.item_template_id).first().name for item in self.items]
-
-
-db.drop_all()
-db.create_all()

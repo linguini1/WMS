@@ -1,4 +1,4 @@
-print("functions.py")
+# Imports
 import csv
 import sqlalchemy.exc
 from wms import db

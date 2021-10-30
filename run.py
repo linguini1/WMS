@@ -1,4 +1,3 @@
-print("run.py")
 # Imports
 from wms import desktopApp
 from wms.functions import load_data
@@ -26,26 +25,27 @@ parser.add_argument("-clear",
 
 args = parser.parse_args()
 
-# Clear database
-if args.clear:
-    while True:
-        confirmation = input("Are you sure you want to clear the database? (y/n): ")
-
-        if confirmation.lower() in ["yes", "y"]:
-            # Drop db logic
-            print("Database cleared.")
-            break
-        elif confirmation.lower() in ["no", "n"]:
-            print("Good thing we double checked.")
-            break
-        else:
-            pass
-
 successful = load_data(args.warehouses, args.itemTemplates, args.items)
 
 if not successful:
     quit()
 
 if __name__ == '__main__':
+
+    # Clear database
+    if args.clear:
+        while True:
+            confirmation = input("Are you sure you want to clear the database? (y/n): ")
+
+            if confirmation.lower() in ["yes", "y"]:
+                # Drop db logic
+                print("Database cleared.")
+                break
+            elif confirmation.lower() in ["no", "n"]:
+                print("Good thing we double checked.")
+                break
+            else:
+                pass
+
     desktopApp.run()
     desktopApp.keep_server_running()

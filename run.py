@@ -1,5 +1,5 @@
 # Imports
-from wms import desktopApp
+from wms import desktopApp, db
 from wms.functions import load_data
 import argparse
 
@@ -39,6 +39,7 @@ if __name__ == '__main__':
 
             if confirmation.lower() in ["yes", "y"]:
                 # Drop db logic
+                db.drop_all()
                 print("Database cleared.")
                 break
             elif confirmation.lower() in ["no", "n"]:

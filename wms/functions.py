@@ -86,6 +86,12 @@ def load_data(warehouses: bool, itemTemplates: bool, items: bool) -> bool:
                           f"and {constants['MAXIMUM_CAPACITY']}.")
                     return False
 
+                # Check that the name is the correct length
+                if not constants["MINIMUM_NAME_LEN"] < len(name) < constants["MAXIMUM_NAME_LEN"]:
+                    print(f"Warehouse '{name}' has a name whose length is not between {constants['MINIMUM_NAME_LEN']}"
+                          f"-{constants['MAXIMUM_NAME_LEN']} characters long.")
+                    return False
+
                 # Check for unique name
                 try:
                     db.session.add(Warehouse(name=name, capacity=capacity))

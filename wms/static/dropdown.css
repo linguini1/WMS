@@ -1,0 +1,52 @@
+.add-items-content select {
+  font-family: 'Montserrat', serif;
+  background-color: #036B80;
+  color: #CEEDF3;
+  border: none;
+  border-radius: 10em;
+  padding: 20px;
+  font-size: 3em;
+  width: 100%;
+}
+
+.add-items-content select:focus {
+  outline: none;
+}
+
+.form {
+  margin-bottom: 2em;
+  margin-right: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.form input {
+  border: none;
+  background-color: #036B80;
+  font-size: 3em;
+  border-radius: 2em;
+  color: #CEEDF3;
+  width: 100%;
+  color: #CEEDF3;
+  outline: none;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.form input::-webkit-input-placeholder {
+  color: #CEEDF3;
+}
+
+.form input:-ms-input-placeholder {
+  color: #CEEDF3;
+}
+
+.form input::-ms-input-placeholder {
+  color: #CEEDF3;
+}
+
+.form input::placeholder {
+  color: #CEEDF3;
+}
+/*# sourceMappingURL=dropdown.css.map */

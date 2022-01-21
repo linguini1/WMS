@@ -203,3 +203,46 @@ def view_item(item_name):
                            price_format=price_format,
                            capacity_format=capacity_format,
                            itemForm=itemForm)
+
+
+# Warehouse items list page
+@app.route("/view-warehouse-items/<warehouse_name>", methods=METHODS)
+def view_warehouse_items(warehouse_name):
+
+    # Information
+    warehouse = Warehouse.query.filter_by(name=warehouse_name).first()
+    itemList = warehouse.items
+
+    possibleRevenue = 0
+    for item in itemList:
+        possibleRevenue += item.possible_revenue
+
+    # Forms
+    itemForm = AddItemForm()
+    itemForm.update_choices()
+    itemForm.warehouse = warehouse
+
+    # Form validation messages
+    if itemForm.validate_on_submit():
+
+        # If warehouse already has this item, add to stock
+        if itemForm.item_name.data in warehouse.item_names:
+            index = warehouse.item_names.index(itemForm.item_name.data)
+            warehouse.items[index].quantity += itemForm.quantity.data
+
+        # New item being added
+        else:
+            db.session.add(Item(quantity=itemForm.quantity.data,
+                                warehouse=warehouse.name,
+                                item_template_id=ItemTemplate.query.filter_by(name=itemForm.item_name.data).first().id))
+
+        db.session.commit()
+        return redirect(url_for('view_warehouse_items', warehouse_name=warehouse.name))
+
+    return render_template('view-warehouse-items.html',
+                           itemForm=itemForm,
+                           itemList=itemList,
+                           possibleRevenue=possibleRevenue,
+                           price_format=price_format,
+                           capacity_format=capacity_format,
+                           warehouse_name=warehouse_name)

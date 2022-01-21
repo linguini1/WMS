@@ -1,0 +1,47 @@
+// Colours
+$deepBlue: #036B80;
+$medBlue: #09B8DB;
+$lightBlue: #CEEDF3;
+$deepOrange: #F96A4E;
+$lightOrange: #FAE0DB;
+
+// Pop up
+.add-items-content {
+    select {
+        font-family: 'Montserrat', serif;
+        background-color: $deepBlue;
+        color: $lightBlue;
+        border: none;
+        border-radius: 10em;
+        padding: 20px;
+        font-size: 3em;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.form {
+    margin-bottom: 2em;
+    margin-right: 0;
+    box-sizing: border-box;
+
+    input {
+        border: none;
+        background-color: $deepBlue;
+        font-size: 3em;
+        border-radius: 2em;
+        color: $lightBlue;
+        width: 100%;
+        color: $lightBlue;
+        outline: none;
+        padding: 20px;
+        box-sizing: border-box;
+        
+        &::placeholder {
+            color: $lightBlue;
+        }
+    }
+}

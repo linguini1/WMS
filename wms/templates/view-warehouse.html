@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="submit">
-                    <img src="{{url_for('static', filename='checkmark.svg')}}" alt="Checkmark">
+                    <img src="{{url_for('static', filename='checkmark.svg')}}" alt="Checkmark" \>
                     {{warehouseForm.submitWarehouse()}}
                 </div>
             </fieldset>
@@ -152,7 +152,7 @@
                         <p>Large scale items</p>
                     </li>
                 </ul>
-                <button class="view-all" id="view-all">
+                <a href="{{url_for('view_warehouse_items', warehouse_name=warehouse.name)}}" class="view-all" id="view-all" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="99.102" height="45.392" viewBox="0 0 99.102 45.392">
                         <g id="Eye" transform="translate(-821.029 -239.385)">
                           <circle id="Ellipse_3" data-name="Ellipse 3" cx="18.692" cy="18.692" r="18.692" transform="translate(853.054 243.388)" fill="#ceedf3"/>
@@ -163,7 +163,7 @@
                         </g>
                       </svg>
                     <h1>View all</h1>
-                </button>
+                </a>
             </div>
         </div>
         <div class="warehouse-buttons">

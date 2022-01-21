@@ -1,5 +1,5 @@
 # Imports
-from wms import desktopApp, db
+from wms import desktopApp, db, app
 from wms.functions import load_data
 import argparse
 
@@ -48,5 +48,6 @@ if not successful:
     quit()
 
 if __name__ == '__main__':
+    #app.run(debug=True)  # For debugging
     desktopApp.run()
     desktopApp.keep_server_running()

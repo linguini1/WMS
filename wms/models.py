@@ -57,6 +57,15 @@ class Item(db.Model):
 
     item_template_id = db.Column(db.Integer, db.ForeignKey('item_template.id'), nullable=False)
 
+    @hybrid_property
+    def get_template(self):
+        return ItemTemplate.query.filter_by(id=self.item_template_id).first()
+
+    @hybrid_property
+    def possible_revenue(self):
+        template = self.get_template
+        return self.quantity * (template.price - template.cost)
+
 
 # Warehouse
 class Warehouse(db.Model):

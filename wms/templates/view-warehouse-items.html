@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="../static/warehouses.css">
+<link rel="stylesheet" href="../static/dropdown.css">
+
+<!--Popup-->
+<div class="modal">
+    <div class="add-items-content popUp">
+        
+        <button class="close" id="item-close">+</button>
+
+        <form method="post" action="" autocomplete="off" id="item-form">
+            {{itemForm.hidden_tag()}}
+            <fieldset>
+                <div class="form">
+                    {{itemForm.item_name()}}
+                    {% if itemForm.item_name.errors %}
+                        {% for error in itemForm.item_name.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                    {{itemForm.quantity()}}
+                    {% if itemForm.quantity.errors %}
+                        {% for error in itemForm.quantity.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="submit">
+                    <img src="{{url_for('static', filename='checkmark.svg')}}" alt="Checkmark">
+                    {{itemForm.submitItem(class="item-submit")}}
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<!--Page content-->
+<div class="content">
+    <div class="list">
+        <ul>
+            <li>
+                <button class="add-warehouse" id="add-item">
+                    <img src="../static/+.svg" alt="+ button">
+                    <h1>Add Item</h1>
+                </button>
+            </li>
+            {% for item in itemList %}
+            <li class="warehouse-card">
+                <ul>
+                    <li class="name-li">
+                        <h1>{{item.get_template.name}}</h1>
+                    </li>
+                    <li>
+                        <ul class="stats">
+                            <li>
+                                <h2>${{price_format(item.get_template.price)}}</h2>
+                                <p>Price</p>
+                            </li>
+                            <li>
+                                <h2>{{capacity_format(item.get_template.size)}}u</h2>
+                                <p>Size</p>
+                            </li>
+                            <li>
+                                <h2>{{item.quantity}}</h2>
+                                <p>Stock</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="edit-li">
+                        <a href="{{url_for('view_item', item_name=item.get_template.name)}}">
+                            <button class="edit-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="27.181" height="28.436" viewBox="0 0 27.181 28.436">
+                                    <g id="Edit_Icon" data-name="Edit Icon" transform="translate(-218.658 -298.529)">
+                                      <path id="Path_1" data-name="Path 1" d="M5.647,0h23.88V6.608H5.647S0,4.979,0,3.327,5.647,0,5.647,0Z" transform="translate(218.658 322.459) rotate(-47)" fill="#09b8db"/>
+                                      <rect id="Rectangle_7" data-name="Rectangle 7" width="6.561" height="2.46" transform="translate(244.161 304.803) rotate(-137)" fill="#09b8db"/>
+                                    </g>
+                                </svg>
+                            </button>
+                        </a>
+                    </li> 
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="warehouse-stats">
+        <ul>
+            <li>
+                <a href="{{url_for('home')}}" class="home">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="33.036" height="32.276" viewBox="0 0 33.036 32.276">
+                        <g id="Icon" transform="translate(-3.897 6.026)">
+                          <g id="Path_7" data-name="Path 7" transform="translate(7.803 9.25)" fill="#09b8db">
+                            <path d="M 25.5 13.5 L 0.5 13.5 L 0.5 0.2417105883359909 L 13.07005786895752 -9.721151351928711 L 25.5 0.2400542944669724 L 25.5 13.5 Z" stroke="none"/>
+                            <path d="M 13.06833553314209 -9.081784248352051 L 1 0.4834187030792236 L 1 13 L 25 13 L 25 0.4801082611083984 L 13.06833553314209 -9.081784248352051 M 13.07178020477295 -10.36051940917969 L 26 2.384185791015625e-07 L 26 14 L 0 14 L 0 2.384185791015625e-07 L 13.07178020477295 -10.36051940917969 Z" stroke="none" fill="#09b8db"/>
+                          </g>
+                          <line id="Line_5" data-name="Line 5" y1="12" x2="15" transform="translate(5.303 -4.25)" fill="none" stroke="#09b8db" stroke-linecap="square" stroke-width="2"/>
+                          <line id="Line_6" data-name="Line 6" x1="16" y1="13" transform="translate(20.303 -5.25)" fill="none" stroke="#09b8db" stroke-width="2"/>
+                          <rect id="Rectangle_15" data-name="Rectangle 15" width="10" height="13" rx="3" transform="translate(15.803 13.25)" fill="#ceedf3"/>
+                        </g>
+                      </svg>
+                </a>
+            </li>
+            <li>
+                <h1>{{itemList|length}}</h1>
+                <p>Unique items</p>
+            </li>
+            <li>
+                <h2>
+                    ${{price_format(possibleRevenue, small=True)}}
+                </h2>
+                <p>Possible revenue</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--Pop up script-->
+<script>
+    document.getElementById("add-item").addEventListener("click", function() {
+        document.querySelector(".modal").style.display = "flex";
+        document.querySelector(".add-items-content").style.display = "block";
+    })
+
+    document.getElementById("item-close").addEventListener("click", function() {
+        document.querySelector(".modal").style.display = "none";
+    })
+</script>
+
+<!--Flash messages-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+            <script>
+                document.querySelector(".modal").style.display = 'flex';
+                document.querySelector(".add-items-content").style.display = 'none';
+
+                setTimeout(fade_out, 2000);
+
+                function fade_out() {
+                    document.querySelector(".success").style.display = 'none';
+                    document.querySelector(".modal").style.display = 'none';
+                };
+            </script>
+
+    {% endif %}
+{% endwith %}
+
+{% endblock content %}

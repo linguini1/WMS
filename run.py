@@ -4,7 +4,7 @@ from wms.functions import load_data
 import argparse
 
 # Parsing command line arguments
-description = """IMPORTANT: When loading information to the database, please insure that all files are stored in the 
+description = """IMPORTANT: When loading information to the database, please ensure that all files are stored in the 
 resources folder and that the file format matches that described in the application documentation."""
 
 parser = argparse.ArgumentParser(description=description)

@@ -18,28 +18,43 @@ The other command line arguments are meant to be used for [debugging](#debugging
 ### Main Dashboard
 Users can add new warehouses from this page, as well as new item templates. It also displays statistics pertaining to
 the entire warehouse system.
+![Main Dashboard](./docs/dashboard.png)
 
 ### View Warehouses
 Users can add new warehouses from this page, and view statistics pertaining to each warehouse in the list. The
 individual warehouse view can be accessed from this page using the 'edit button'.
+![View Warehouses](./docs/warehouseView.png)
 
 ### View Items
 Users can add new item templates from this page, and view statistics pertaining to each item in the list. The individual
 item view can be accessed from this page using the 'edit button'.
+![View Items](./docs/itemsView.png)
 
 ### Individual Warehouse View
 Users can change the information related to a warehouse from this page. They may also add items that will be attributed
 to the warehouse from this page. Statistics about the given warehouse will be displayed. A list of all the items stored
 at the given warehouse can be accessed using the 'view all' button.
+![Individual Warehouse View](./docs/singleWarehouseView.png)
 
 ### Individual Item View
 Users can change the information related to an item template from this page. Statistics about the given item template 
 will be displayed.
+![Individual Item View](./docs/singleItemView.png)
 
 ### View Warehouse Items
 Users can view the items that are stored in the given warehouse. Here, they can also add an item to be stored at the
 given warehouse and the quantity of the item to be stored. A brief overview of the number of unique items and the total
 possible revenue is given on the right.
+![View Warehouse Items](./docs/warehouseItems.png)
+
+### Adding an Item to the Item Library
+In order to add an item to the item library, click 'Create Item' on the [view items](#view-items) page.
+![Add Item to Library](./docs/createItem.png)
+
+### Adding Item to a Warehouse
+In order to add an item to a specific warehouse, the item must already be in the item library. It can then be selected
+from the dropdown menu on the pop-up.
+![Add Item to Warehouse](./docs/addItem.png)
 
 ## Debugging
 Command line arguments for debugging include:

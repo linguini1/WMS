@@ -2,3 +2,7 @@
 *.db
 # Don't commit csv files
 *.csv
+# But allow these files for example purposes
+!item-templates.csv
+!items.csv
+!warehouses.csv

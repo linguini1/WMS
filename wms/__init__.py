@@ -21,7 +21,7 @@ db.create_all()
 desktopApp = FlaskUI(app,
                      width=1200,
                      height=675,
-                     browser_path='C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
+                     browser_path='C:\Program Files\Google\Chrome\Application\chrome.exe')
 
 
 from wms import routes
